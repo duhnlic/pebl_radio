@@ -1,11 +1,16 @@
 import './App.css';
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import ReactPlayer from 'react-player'
 import { useState, useEffect } from "react";
 import Other from './Other'
 import Home from './Home'
 import UserSearchBar from './Components/UserSearchBar/UserSearchBar'
 import logo from './shared/radio_logo.svg'
 import RadioList from './Components/RadioList/RadioList'
+import MediaControlCard from './Components/MediaPlayer/MediaPlayer'
+import ReactAudioPlayer from 'react-audio-player';
+// import axios from "axios";
+// const axios = require("axios");
 
 // Save the Component, key and path in an array of objects for each Route
 // You could write all routes by hand but I'm lazy annd this lets me use
@@ -32,29 +37,39 @@ const routes = [
 ]
 
 export default function App () {
-  const [searchString, setSearchString] = useState('');
+  const [searchString, setSearchString] = useState(' ');
   const [results, setResults] = useState([]);
+  const [resultCountry, setResultCountry] = useState('ALL');
+  const [resultGenre, setResultGenre] = useState('ALL');
 
-  const apiStructure = {
-    apiKey: process.env.REACT_APP_STATION_KEY,
-    apiRoot: 'https://30-000-radio-stations-and-music-charts.p.rapidapi.com/rapidapi?country=ALL&keyword=',
+  
+  const apiKey = process.env.REACT_APP_STATION_KEY;
+  const apiRoot = 'https://30-000-radio-stations-and-music-charts.p.rapidapi.com/rapidapi?country=';
+  const keyword = '&keyword=';
+  const genreRoot = '&genre=';
     
-  };
+  
+  console.log({apiKey});
 
-  function getStations(searchString){
-    fetch(`${apiStructure.apiRoot}${encodeURI(searchString)}&genre=ALL`, {
-      "method": "GET",
-      "headers": {
-        "x-rapidapi-key": `bc056006f2msh3b35a2de07ea1b5p1bdf3djsnf66e3c9e1dca`,
-        "x-rapidapi-host": "30-000-radio-stations-and-music-charts.p.rapidapi.com"
-      }
-    })
-    .then(response => {
-      setResults(response);
-    })
-    .catch(err => {
-      console.error(err);
-    });
+  const getStations= async () => {
+
+    try {
+      const res = await fetch(`${apiRoot}${resultCountry}${keyword}${encodeURI(searchString)}${genreRoot}${resultGenre}`, {
+        "method": "GET",
+        "headers": {
+          "x-rapidapi-key": `${apiKey}`,
+          "x-rapidapi-host": "30-000-radio-stations-and-music-charts.p.rapidapi.com"
+        }
+      });
+      const data = await res.json();
+      setResults(data.results);
+      setSearchString('');
+      // for (let i = 0; i < 20; i++){
+      //   console.log(JSON.stringify(data.results[i], null, 2))
+      // }
+    } catch(err){
+      console.log(err);
+    }
   }
 
   useEffect(()=>{
@@ -71,6 +86,14 @@ export default function App () {
     getStations(searchString);
   }
 
+  function handleCountryChange(event) {
+    setResultCountry(event.target.value);
+  }
+
+  function handleGenreChange(event) {
+    setResultGenre(event.target.value);
+  }
+
   return (
     <Router>
       <nav>
@@ -85,8 +108,16 @@ export default function App () {
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           searchString={searchString}
+          handleCountryChange={handleCountryChange}
+          handleGenreChange={handleGenreChange}
         />
       </header>
+      {/* <MediaControlCard url='http://sc-hv.1.fm:7058'/> */}
+      <ReactAudioPlayer className="media-player"
+  src=""
+  autoPlay
+  controls
+/>
       <Switch>
         {
           routes.map(({key, Component, path}) => (

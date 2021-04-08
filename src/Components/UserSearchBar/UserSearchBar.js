@@ -1,8 +1,8 @@
-// import FilterByCountry from '../FilterByCountry/FilterByCountry';
-// import FilterByGenre from '../FilterByGenre/FilterByGenre';
-import logo from '../../shared/radio_logo.svg'
+import FilterByCountry from '../FilterByCountry/FilterByCountry';
+import FilterByGenre from '../FilterByGenre/FilterByGenre';
+import play from '../../shared/play1.svg'
 
-export default function UserSearchBar({ handleSubmit, handleChange, searchString }) {
+export default function UserSearchBar({ handleSubmit, handleChange, searchString, handleCountryChange, handleGenreChange }) {
     return (
       <form onSubmit={handleSubmit} className="form-horizontal">
         <input
@@ -13,13 +13,12 @@ export default function UserSearchBar({ handleSubmit, handleChange, searchString
           onChange={handleChange}
           value={searchString}
         />
-        {/* <FilterByCountry handleQuantityChange={handleQuantityChange}/>
-        <FilterByGenre handleRatingChange={handleRatingChange}/> */}
         <button type="submit">
-          <img src={logo} height="1.5rem" width="2rem" className="app-logo" alt="Stewdio Internet Radio App" />
+          <img src={play} height="100px" width="150px" className="play-pause" alt="Play/Pause" />
         </button>
+        <FilterByCountry handleCountryChange={handleCountryChange}/>
+        <FilterByGenre handleGenreChange={handleGenreChange}/>
       </form>
     );
   }
 
-//   handleQuantityChange, handleRatingChange, handleLanguageChange
