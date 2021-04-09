@@ -33,7 +33,7 @@ export default function FilterByCountry({handleCountryChange}){
             <select name="Country"  id="result-country" onChange={handleCountryChange}>
                 {results.map((stationObject) =>{
                     return(
-                        <option key={stationObject.i}>{stationObject.code}</option>
+                        <option value={stationObject.code} key={stationObject.i}>{stationObject.name}</option>
 
                     )})}
             </select>

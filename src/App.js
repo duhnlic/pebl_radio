@@ -1,6 +1,6 @@
 import './App.css';
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import Other from './Other'
 import Home from './Home'
 import UserSearchBar from './Components/UserSearchBar/UserSearchBar'
@@ -9,27 +9,6 @@ import RadioList from './Components/RadioList/RadioList'
 import MediaControlCard from './Components/MediaPlayer/MediaPlayer'
 import ReactAudioPlayer from 'react-audio-player';
 
-
-import Grid from '@material-ui/core/Grid';
-
-import pink from "@material-ui/core/colors/pink";
-import deepPurple from "@material-ui/core/colors/deepPurple";
-
-import createTheme from "@material-ui/core/styles/createMuiTheme";
-import ThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
-
-import { AudioPlayer } from 'mui-audio-player';
-
-
-
-
-// import { makeStyles, useTheme } from '@material-ui/core/styles';
-// import Card from '@material-ui/core/Card';
-// import CardContent from '@material-ui/core/CardContent';
-// import CardMedia from '@material-ui/core/CardMedia';
-// import IconButton from '@material-ui/core/IconButton';
-// import Typography from '@material-ui/core/Typography';
-// import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
 
 // Save the Component, key and path in an array of objects for each Route
@@ -65,8 +44,12 @@ export default function App () {
   const [resultCountry, setResultCountry] = useState('ALL');
   const [resultGenre, setResultGenre] = useState('ALL');
   const [currentMedia, setCurrentMedia] = useState('');
-  // const [currentStation, setCurrentStation] = useState('');
-  const [playPause, setPlayPause] = useState(false);
+  const [currentStation, setCurrentStation] = useState('');
+  const [currentCountry, setCurrentCountry] = useState('');
+  const [currentGenre, setCurrentGenre] = useState('');
+  const [playPause, setPlayPause] = useState('true');
+  const audioElement = useRef(null);
+
   
   
   const apiKey = process.env.REACT_APP_STATION_KEY;
@@ -105,78 +88,6 @@ export default function App () {
 
 
 
-
-  // const useStyles = makeStyles((theme) => ({
-  //   root: {
-  //     display: 'flex',
-  //     backgroundColor: '#2f4858',
-  //     color: '#a6bac9'
-  //   },
-  //   details: {
-  //     display: 'flex',
-  //     flexDirection: 'column',
-  //   },
-  //   content: {
-  //     flex: '1 0 auto',
-  //     color: '#a6bac9'
-  //   },
-  //   cover: {
-  //     width: 151,
-  //   },
-  //   controls: {
-  //     display: 'flex',
-  //     alignItems: 'center',
-  //     paddingLeft: theme.spacing(1),
-  //     paddingBottom: theme.spacing(1),
-  //   },
-  //   playIcon: {
-  //     height: 52,
-  //     width: 150,
-  //     color: '#a6bac9'
-  //   },
-  // }));
-  
-  // function MediaControlCard() {
-  //   const classes = useStyles();
-  //   const theme = useTheme();
-    // 
-      // 
-  //     return (
-      
-  //             <Card className={classes.root}>
-  //             <div className={classes.details}>
-  //                 <CardContent className={classes.content}>
-  //                 <Typography component="h5" variant="h5" className={classes.content}>
-  //                     Station: {currentStation}
-  //                 </Typography>
-  //                 <Typography variant="subtitle1" className={classes.content}>
-  //                     Country:
-  //                 </Typography>
-  //                 <Typography variant="subtitle2" className={classes.content}>
-  //                     Genre:
-  //                 </Typography>
-  //                 </CardContent>
-  //                 <div className={classes.controls}>
-  //                 <IconButton aria-label="play/pause">
-  //                     <PlayArrowIcon className={classes.playIcon}
-                        
-  //                     />
-  //                 </IconButton>
-  //                 </div>
-  //             </div>
-  //             <CardMedia
-  //                 className={classes.cover}
-  //                 image="/static/images/cards/live-from-space.jpg"
-  //                 title="Live from space album cover"
-  //             />
-  //             </Card>
-          
-  //     );
-  // }
-
-
-
-
   // function handlePlayChange(event){
   //   setPlayPause(event.target.value);
   // }
@@ -192,6 +103,7 @@ export default function App () {
   }
 
   function handleCountryChange(event) {
+    // console.log(event.target.value);
     setResultCountry(event.target.value);
   }
 
@@ -199,24 +111,25 @@ export default function App () {
     setResultGenre(event.target.value);
   }
 
-  // const RadioPlayer = ReactMediaPlayer
-    const mutedState = true;
+  function setTrue(){
+    playPause = true;
+  }
+
 
   function handlePlay(event){
-    setPlayPause(!playPause)
+    if (playPause === 'true'){
+    audioElement.current.audioEl.current.pause()
+    playPause = false;
     console.log("This works!")
+    } else if (playPause === 'false'){
+      audioElement.current.audioEl.current.play()
+      console.log("This works!")
+    }
     // ReactAudioPlayer.pause()
     // console.log(ReactMediaPlayer)
 
   }
 
-//   const theme = createTheme({
-//     palette: {
-//         type: 'light',
-//         primary: deepPurple,
-//         secondary: pink
-//     }
-// });
 
   return (
     <Router>
@@ -225,33 +138,18 @@ export default function App () {
           <ReactAudioPlayer className="media-player"
             src= {currentMedia}
             autoPlay
-            mute={mutedState}
+            ref={audioElement}
             controls
           />
-          {/* <ThemeProvider theme={theme}>
-              <Grid justify="center" alignContent="center"alignItems="center" container style={{ height: "10rem",backgroundColor: deepPurple["500"] }}>
-                  <Grid md={4} item />
-                  <Grid md={4} item>
-                      <AudioPlayer 
-                          theme={theme}
-                          src="http://5.39.71.159:8994/;"
-                          src={currentMedia}
-                          autoPlay={true}
-                          rounded={true}
-                          elevation={1}
-                          width="400px"
-                      />
-                  </Grid>
-                  <Grid md={4} item />
-              </Grid>
-          </ThemeProvider> */}
-
-
 
           <MediaControlCard
             handlePlay={handlePlay}
-            // currentStation={currentStation}
+            currentStation={currentStation}
+            currentCountry={currentCountry}
+            currentGenre={currentGenre}
           />
+
+
       </nav>
       <header>
         <div className="brand">
@@ -278,8 +176,12 @@ export default function App () {
       </Switch> */}
       <RadioList 
       setCurrentMedia={setCurrentMedia}
-      // setCurrentStation={setCurrentStation}
-      results={results}/>
+      setCurrentStation={setCurrentStation}
+      setCurrentCountry={setCurrentCountry}
+      setCurrentGenre={setCurrentGenre}
+      results={results}
+      setPlayPause={setPlayPause}
+      setTrue={setTrue}/>
     </Router>
   )
 }

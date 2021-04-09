@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MediaControlCard({handlePlay}) {
+export default function MediaControlCard({handlePlay, currentStation, currentCountry, currentGenre}) {
   const classes = useStyles();
 
   
@@ -50,13 +50,13 @@ export default function MediaControlCard({handlePlay}) {
             <div className={classes.details}>
                 <CardContent className={classes.content}>
                 <Typography component="h5" variant="h5" className={classes.content}>
-                    Station:
+                    Station: {currentStation}
                 </Typography>
                 <Typography variant="subtitle1" className={classes.content}>
-                    Country:
+                    Country: {currentCountry}
                 </Typography>
                 <Typography variant="subtitle2" className={classes.content}>
-                    Genre:
+                    Genre: {currentGenre}
                 </Typography>
                 </CardContent>
                 <div className={classes.controls}>

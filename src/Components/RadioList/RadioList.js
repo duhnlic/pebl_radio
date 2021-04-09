@@ -1,7 +1,7 @@
 import play from '../../shared/play_push_icon.svg'
 import radio from '../../shared/radio_icon2.svg'
 
-const RadioList = ({results, setCurrentMedia, setCurrentStation}) =>{
+const RadioList = ({results, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setPlayPause, setTrue}) =>{
     // console.log(JSON.stringify(results, null, 2));
     // return early if there are no stations
     if (!results.length){
@@ -23,9 +23,13 @@ const RadioList = ({results, setCurrentMedia, setCurrentStation}) =>{
                     </div>
                     <div>
                         <button 
-                        onClick={() => 
-                            setCurrentMedia(stationObject.u)
-                            // setCurrentStation(stationObject.n)
+                        onClick={() => { 
+                                setCurrentMedia(stationObject.u)
+                                setCurrentStation(stationObject.n)
+                                setCurrentCountry(stationObject.c)
+                                setCurrentGenre(stationObject.g)
+                                setTrue(true)
+                            }
                         }>
                             <img src={play} height="30px" width="30px" className="play-pause" alt="Play/Pause" />
                         </button>
