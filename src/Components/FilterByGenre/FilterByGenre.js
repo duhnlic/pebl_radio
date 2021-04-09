@@ -32,7 +32,7 @@ export default function FilterByGenre({handleGenreChange}){
             <select name="Genre" id="result-genre" onChange={handleGenreChange}>
                 {results.map((stationObject)=>{
                     return(
-                            <option key={stationObject.i}>{stationObject.c}</option>
+                            <option key={stationObject.i}>{stationObject.i}</option>
                     )})}
             </select>
         </div>

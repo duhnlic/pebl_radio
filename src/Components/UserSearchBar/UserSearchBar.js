@@ -1,8 +1,9 @@
 import FilterByCountry from '../FilterByCountry/FilterByCountry';
 import FilterByGenre from '../FilterByGenre/FilterByGenre';
-import play from '../../shared/play1.svg'
+import search from '../../shared/search_icon2.svg'
 
 export default function UserSearchBar({ handleSubmit, handleChange, searchString, handleCountryChange, handleGenreChange }) {
+
     return (
       <form onSubmit={handleSubmit} className="form-horizontal">
         <input
@@ -13,8 +14,8 @@ export default function UserSearchBar({ handleSubmit, handleChange, searchString
           onChange={handleChange}
           value={searchString}
         />
-        <button type="submit">
-          <img src={play} height="100px" width="150px" className="play-pause" alt="Play/Pause" />
+        <button type="submit" className="search-button">
+          <img src={search} height="40px" width="40px" className="search" alt="search-icon" />
         </button>
         <FilterByCountry handleCountryChange={handleCountryChange}/>
         <FilterByGenre handleGenreChange={handleGenreChange}/>

@@ -1,16 +1,36 @@
 import './App.css';
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
-import ReactPlayer from 'react-player'
 import { useState, useEffect } from "react";
 import Other from './Other'
 import Home from './Home'
 import UserSearchBar from './Components/UserSearchBar/UserSearchBar'
-import logo from './shared/radio_logo.svg'
+import logo from './shared/App_Icon.svg'
 import RadioList from './Components/RadioList/RadioList'
 import MediaControlCard from './Components/MediaPlayer/MediaPlayer'
 import ReactAudioPlayer from 'react-audio-player';
-// import axios from "axios";
-// const axios = require("axios");
+
+
+import Grid from '@material-ui/core/Grid';
+
+import pink from "@material-ui/core/colors/pink";
+import deepPurple from "@material-ui/core/colors/deepPurple";
+
+import createTheme from "@material-ui/core/styles/createMuiTheme";
+import ThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+
+import { AudioPlayer } from 'mui-audio-player';
+
+
+
+
+// import { makeStyles, useTheme } from '@material-ui/core/styles';
+// import Card from '@material-ui/core/Card';
+// import CardContent from '@material-ui/core/CardContent';
+// import CardMedia from '@material-ui/core/CardMedia';
+// import IconButton from '@material-ui/core/IconButton';
+// import Typography from '@material-ui/core/Typography';
+// import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+
 
 // Save the Component, key and path in an array of objects for each Route
 // You could write all routes by hand but I'm lazy annd this lets me use
@@ -36,12 +56,18 @@ const routes = [
   }
 ]
 
+
+
+
 export default function App () {
-  const [searchString, setSearchString] = useState(' ');
+  const [searchString, setSearchString] = useState('');
   const [results, setResults] = useState([]);
   const [resultCountry, setResultCountry] = useState('ALL');
   const [resultGenre, setResultGenre] = useState('ALL');
-
+  const [currentMedia, setCurrentMedia] = useState('');
+  // const [currentStation, setCurrentStation] = useState('');
+  const [playPause, setPlayPause] = useState(false);
+  
   
   const apiKey = process.env.REACT_APP_STATION_KEY;
   const apiRoot = 'https://30-000-radio-stations-and-music-charts.p.rapidapi.com/rapidapi?country=';
@@ -49,10 +75,10 @@ export default function App () {
   const genreRoot = '&genre=';
     
   
-  console.log({apiKey});
+  // console.log({apiKey});
 
   const getStations= async () => {
-
+    console.log(`${apiRoot}${resultCountry}${keyword}${encodeURI(searchString)}${genreRoot}${resultGenre}`)
     try {
       const res = await fetch(`${apiRoot}${resultCountry}${keyword}${encodeURI(searchString)}${genreRoot}${resultGenre}`, {
         "method": "GET",
@@ -64,18 +90,97 @@ export default function App () {
       const data = await res.json();
       setResults(data.results);
       setSearchString('');
+      // console.log(data)
       // for (let i = 0; i < 20; i++){
-      //   console.log(JSON.stringify(data.results[i], null, 2))
+        // console.log(JSON.stringify(data.results[i], null, 2))
       // }
     } catch(err){
       console.log(err);
     }
   }
 
-  useEffect(()=>{
 
-    getStations();
-  },[]);
+
+
+
+
+
+
+  // const useStyles = makeStyles((theme) => ({
+  //   root: {
+  //     display: 'flex',
+  //     backgroundColor: '#2f4858',
+  //     color: '#a6bac9'
+  //   },
+  //   details: {
+  //     display: 'flex',
+  //     flexDirection: 'column',
+  //   },
+  //   content: {
+  //     flex: '1 0 auto',
+  //     color: '#a6bac9'
+  //   },
+  //   cover: {
+  //     width: 151,
+  //   },
+  //   controls: {
+  //     display: 'flex',
+  //     alignItems: 'center',
+  //     paddingLeft: theme.spacing(1),
+  //     paddingBottom: theme.spacing(1),
+  //   },
+  //   playIcon: {
+  //     height: 52,
+  //     width: 150,
+  //     color: '#a6bac9'
+  //   },
+  // }));
+  
+  // function MediaControlCard() {
+  //   const classes = useStyles();
+  //   const theme = useTheme();
+    // 
+      // 
+  //     return (
+      
+  //             <Card className={classes.root}>
+  //             <div className={classes.details}>
+  //                 <CardContent className={classes.content}>
+  //                 <Typography component="h5" variant="h5" className={classes.content}>
+  //                     Station: {currentStation}
+  //                 </Typography>
+  //                 <Typography variant="subtitle1" className={classes.content}>
+  //                     Country:
+  //                 </Typography>
+  //                 <Typography variant="subtitle2" className={classes.content}>
+  //                     Genre:
+  //                 </Typography>
+  //                 </CardContent>
+  //                 <div className={classes.controls}>
+  //                 <IconButton aria-label="play/pause">
+  //                     <PlayArrowIcon className={classes.playIcon}
+                        
+  //                     />
+  //                 </IconButton>
+  //                 </div>
+  //             </div>
+  //             <CardMedia
+  //                 className={classes.cover}
+  //                 image="/static/images/cards/live-from-space.jpg"
+  //                 title="Live from space album cover"
+  //             />
+  //             </Card>
+          
+  //     );
+  // }
+
+
+
+
+  // function handlePlayChange(event){
+  //   setPlayPause(event.target.value);
+  // }
+
 
   function handleChange(event) {
     setSearchString(event.target.value);
@@ -94,14 +199,63 @@ export default function App () {
     setResultGenre(event.target.value);
   }
 
+  // const RadioPlayer = ReactMediaPlayer
+    const mutedState = true;
+
+  function handlePlay(event){
+    setPlayPause(!playPause)
+    console.log("This works!")
+    // ReactAudioPlayer.pause()
+    // console.log(ReactMediaPlayer)
+
+  }
+
+//   const theme = createTheme({
+//     palette: {
+//         type: 'light',
+//         primary: deepPurple,
+//         secondary: pink
+//     }
+// });
+
   return (
     <Router>
       <nav>
-        {routes.map(route => <Link key={route.key} to={route.path}>{route.key}</Link>)}
+        {/* {routes.map(route => <Link key={route.key} to={route.path}>{route.key}</Link>)} */}
+          <ReactAudioPlayer className="media-player"
+            src= {currentMedia}
+            autoPlay
+            mute={mutedState}
+            controls
+          />
+          {/* <ThemeProvider theme={theme}>
+              <Grid justify="center" alignContent="center"alignItems="center" container style={{ height: "10rem",backgroundColor: deepPurple["500"] }}>
+                  <Grid md={4} item />
+                  <Grid md={4} item>
+                      <AudioPlayer 
+                          theme={theme}
+                          src="http://5.39.71.159:8994/;"
+                          src={currentMedia}
+                          autoPlay={true}
+                          rounded={true}
+                          elevation={1}
+                          width="400px"
+                      />
+                  </Grid>
+                  <Grid md={4} item />
+              </Grid>
+          </ThemeProvider> */}
+
+
+
+          <MediaControlCard
+            handlePlay={handlePlay}
+            // currentStation={currentStation}
+          />
       </nav>
       <header>
         <div className="brand">
-            <img src={logo} width="125" height="125" className="app-logo" alt="Stewdio Internet Radio App" />
+            <img src={logo} width="200" height="200" className="App-logo" alt="Stewdio Internet Radio App" />
             <h1 className="logo-app-name">Stewdio Radio</h1>
         </div>
         <UserSearchBar
@@ -112,13 +266,7 @@ export default function App () {
           handleGenreChange={handleGenreChange}
         />
       </header>
-      {/* <MediaControlCard url='http://sc-hv.1.fm:7058'/> */}
-      <ReactAudioPlayer className="media-player"
-  src=""
-  autoPlay
-  controls
-/>
-      <Switch>
+      {/* <Switch>
         {
           routes.map(({key, Component, path}) => (
             <Route
@@ -127,8 +275,11 @@ export default function App () {
               component={props => <Component {...props} page={key} />}
               />))
         }
-      </Switch>
-      <RadioList results={results}/>
+      </Switch> */}
+      <RadioList 
+      setCurrentMedia={setCurrentMedia}
+      // setCurrentStation={setCurrentStation}
+      results={results}/>
     </Router>
   )
 }

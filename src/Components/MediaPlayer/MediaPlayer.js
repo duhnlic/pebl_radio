@@ -5,13 +5,14 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
+import ReactAudioPlayer from 'react-audio-player';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    backgroundColor: '#2f4858',
+    color: '#a6bac9'
   },
   details: {
     display: 'flex',
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flex: '1 0 auto',
+    color: '#a6bac9'
   },
   cover: {
     width: 151,
@@ -30,38 +32,44 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(1),
   },
   playIcon: {
-    height: 38,
-    width: 38,
+    height: 52,
+    width: 150,
+    color: '#a6bac9'
   },
 }));
 
-export default function MediaControlCard() {
+export default function MediaControlCard({handlePlay}) {
   const classes = useStyles();
-  const theme = useTheme();
+
   
-    
+
+      
     return (
     
             <Card className={classes.root}>
             <div className={classes.details}>
                 <CardContent className={classes.content}>
-                <Typography component="h5" variant="h5">
-                    Live From Space
+                <Typography component="h5" variant="h5" className={classes.content}>
+                    Station:
                 </Typography>
-                <Typography variant="subtitle1" color="textSecondary">
-                    Mac Miller
+                <Typography variant="subtitle1" className={classes.content}>
+                    Country:
+                </Typography>
+                <Typography variant="subtitle2" className={classes.content}>
+                    Genre:
                 </Typography>
                 </CardContent>
                 <div className={classes.controls}>
-                <IconButton aria-label="previous">
-                    {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
+                <IconButton onClick={handlePlay} aria-label="play/pause">
+                
+                    <PlayArrowIcon 
+                    className={classes.playIcon}
+                    
+                    
+                    
+                    />
                 </IconButton>
-                <IconButton aria-label="play/pause">
-                    <PlayArrowIcon className={classes.playIcon} />
-                </IconButton>
-                <IconButton aria-label="next">
-                    {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
-                </IconButton>
+
                 </div>
             </div>
             <CardMedia
@@ -72,4 +80,5 @@ export default function MediaControlCard() {
             </Card>
         
     );
+
 }
