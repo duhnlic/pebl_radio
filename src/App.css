@@ -83,6 +83,10 @@
   border-radius: 12px;
 }
 
+.disclaimer{
+  font-size: 10px;
+}
+
 .welcome{
   display: flex;
   flex-direction: column;
@@ -100,10 +104,6 @@
 }
 
 
-
-
-
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -111,4 +111,91 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+@media screen and (max-width: 396px){  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+
+  .App-link {
+    color: #61dafb;
+  }
+  
+  .station{
+    border: 1px solid white;
+    margin: 50px 0;
+  }
+  
+  .radio-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .brand{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 150px;
+  }
+  
+  .logo-app-name{
+    margin-left: -20px;
+  }
+  
+  .user-search{
+    padding: 0 8px 0 8px;
+    margin: 0;
+  }
+  
+  .ResultCountry{
+    margin: 12px 12px;
+    transform: translateX(9.5%);
+  }
+  
+  .ResultGenre{
+    margin: 12px 12px;
+    transform: translateX(9.5%);
+  }
+  
+  .search-button{
+    padding:  0.45rem 2rem;
+    transform: translate(82%, 2.5%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #result-country{
+    padding: 3px 1px;
+    border-radius: 12px;
+  }
+  
+  #result-genre{
+    padding: 3px 1px;
+    border-radius: 12px;
+  }
+  
+  .disclaimer{
+    font-size: 10px;
+  }
+  
+  .welcome{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .welcome-message{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .top-pick{
+    border: 1px solid white;
+    margin: 50px 0;
+  }
+  
 }

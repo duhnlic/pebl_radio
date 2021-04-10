@@ -5,11 +5,12 @@ const RadioList = ({results, setCurrentMedia, setCurrentStation, setCurrentCount
     // console.log(JSON.stringify(results, null, 2));
     // return early if there are no stations
     if (!results.length){
-        
+
         return (
             <div>
                 <div>
                     <div className="welcome">
+                            <p className="disclaimer">DISCLAIMER: Stewdio Radio is not responsible for broken links from station providers.</p>
                             <h2 className="welcome-message">This Month's Top Picks</h2>
                     </div>
                     <div className="top-pick">
