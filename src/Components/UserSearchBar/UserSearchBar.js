@@ -5,7 +5,7 @@ import search from '../../shared/search_icon2.svg'
 export default function UserSearchBar({ handleSubmit, handleChange, searchString, handleCountryChange, handleGenreChange }) {
 
     return (
-      <form onSubmit={handleSubmit} className="form-horizontal">
+      <form onSubmit={handleSubmit} className="user-search">
         <input
           placeholder="Search"
           type="text"

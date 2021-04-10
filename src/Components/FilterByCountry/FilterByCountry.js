@@ -29,7 +29,7 @@ export default function FilterByCountry({handleCountryChange}){
     return(
         <div className="ResultCountry">
             
-            <label htmlFor="Country">Country</label>
+            <label htmlFor="Country">Country (Default: All) </label>
             <select name="Country"  id="result-country" onChange={handleCountryChange}>
                 {results.map((stationObject) =>{
                     return(

@@ -1,18 +1,23 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import ReactAudioPlayer from 'react-audio-player';
+import  play from '../../shared/radio_icon2.svg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     backgroundColor: '#2f4858',
-    color: '#a6bac9'
+    color: '#a6bac9',
+    boxShadow: '-8px 14px 4.1px 0 rgba(0, 0, 0, 0.225)',
+    position: 'fixed',
+    zIndex: '3000',
+    width: '95%',
+    
   },
   details: {
     display: 'flex',
@@ -23,7 +28,10 @@ const useStyles = makeStyles((theme) => ({
     color: '#a6bac9'
   },
   cover: {
-    width: 151,
+    width: 81,
+    height: 81,
+    marginTop: theme.spacing(6),
+    marginRight: theme.spacing(3),
   },
   controls: {
     display: 'flex',
@@ -41,9 +49,6 @@ const useStyles = makeStyles((theme) => ({
 export default function MediaControlCard({handlePlay, currentStation, currentCountry, currentGenre}) {
   const classes = useStyles();
 
-  
-
-      
     return (
     
             <Card className={classes.root}>
@@ -61,20 +66,13 @@ export default function MediaControlCard({handlePlay, currentStation, currentCou
                 </CardContent>
                 <div className={classes.controls}>
                 <IconButton onClick={handlePlay} aria-label="play/pause">
-                
-                    <PlayArrowIcon 
-                    className={classes.playIcon}
-                    
-                    
-                    
-                    />
+                    <PlayArrowIcon className={classes.playIcon}/>
                 </IconButton>
-
                 </div>
             </div>
             <CardMedia
                 className={classes.cover}
-                image="/static/images/cards/live-from-space.jpg"
+                image={play}
                 title="Live from space album cover"
             />
             </Card>

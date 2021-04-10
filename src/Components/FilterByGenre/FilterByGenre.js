@@ -28,7 +28,7 @@ export default function FilterByGenre({handleGenreChange}){
 
     return(
         <div className="ResultGenre">
-            <label htmlFor="Genre">Genre</label>
+            <label htmlFor="Genre">Genre (Default: All) </label>
             <select name="Genre" id="result-genre" onChange={handleGenreChange}>
                 {results.map((stationObject)=>{
                     return(

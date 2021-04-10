@@ -5,7 +5,14 @@ const RadioList = ({results, setCurrentMedia, setCurrentStation, setCurrentCount
     // console.log(JSON.stringify(results, null, 2));
     // return early if there are no stations
     if (!results.length){
-        return <h2>Welcome to Stewdio Radio</h2>
+
+
+        //put curated station list?
+        return (
+            <div className="welcome-message">
+                <h2>Welcome to Stewdio Radio</h2>
+            </div>
+        )
     }
 
     return(
@@ -21,14 +28,14 @@ const RadioList = ({results, setCurrentMedia, setCurrentStation, setCurrentCount
                         <img src={radio} height="30" width="30" alt="station-logo"></img>
                         <hr />
                     </div>
-                    <div>
+                    <div  className="radio-button">
                         <button 
                         onClick={() => { 
                                 setCurrentMedia(stationObject.u)
                                 setCurrentStation(stationObject.n)
                                 setCurrentCountry(stationObject.c)
                                 setCurrentGenre(stationObject.g)
-                                setTrue(true)
+                                setTrue()
                             }
                         }>
                             <img src={play} height="30px" width="30px" className="play-pause" alt="Play/Pause" />

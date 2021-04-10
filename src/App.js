@@ -47,18 +47,13 @@ export default function App () {
   const [currentStation, setCurrentStation] = useState('');
   const [currentCountry, setCurrentCountry] = useState('');
   const [currentGenre, setCurrentGenre] = useState('');
-  const [playPause, setPlayPause] = useState('true');
+  const [playPause, setPlayPause] = useState(true);
   const audioElement = useRef(null);
 
-  
-  
   const apiKey = process.env.REACT_APP_STATION_KEY;
   const apiRoot = 'https://30-000-radio-stations-and-music-charts.p.rapidapi.com/rapidapi?country=';
   const keyword = '&keyword=';
   const genreRoot = '&genre=';
-    
-  
-  // console.log({apiKey});
 
   const getStations= async () => {
     console.log(`${apiRoot}${resultCountry}${keyword}${encodeURI(searchString)}${genreRoot}${resultGenre}`)
@@ -83,16 +78,6 @@ export default function App () {
   }
 
 
-
-
-
-
-
-  // function handlePlayChange(event){
-  //   setPlayPause(event.target.value);
-  // }
-
-
   function handleChange(event) {
     setSearchString(event.target.value);
   }
@@ -112,22 +97,20 @@ export default function App () {
   }
 
   function setTrue(){
-    playPause = true;
+    setPlayPause(true)
   }
 
 
   function handlePlay(event){
-    if (playPause === 'true'){
+    if (playPause === true){
     audioElement.current.audioEl.current.pause()
-    playPause = false;
+    setPlayPause(false);
     console.log("This works!")
-    } else if (playPause === 'false'){
+    } else if (playPause === false){
       audioElement.current.audioEl.current.play()
       console.log("This works!")
+      setPlayPause(true);
     }
-    // ReactAudioPlayer.pause()
-    // console.log(ReactMediaPlayer)
-
   }
 
 
@@ -135,21 +118,18 @@ export default function App () {
     <Router>
       <nav>
         {/* {routes.map(route => <Link key={route.key} to={route.path}>{route.key}</Link>)} */}
-          <ReactAudioPlayer className="media-player"
-            src= {currentMedia}
-            autoPlay
-            ref={audioElement}
-            controls
-          />
-
           <MediaControlCard
             handlePlay={handlePlay}
             currentStation={currentStation}
             currentCountry={currentCountry}
             currentGenre={currentGenre}
           />
-
-
+          <ReactAudioPlayer className="media-player"
+            src= {currentMedia}
+            autoPlay
+            ref={audioElement}
+            // controls
+          />
       </nav>
       <header>
         <div className="brand">
