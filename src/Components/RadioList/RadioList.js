@@ -4,13 +4,12 @@ import radio from '../../shared/radio_icon2.svg'
 const RadioList = ({results, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setPlayPause, setTrue}) =>{
     // console.log(JSON.stringify(results, null, 2));
     // return early if there are no stations
-    if (!results.length){
+    if (results === undefined || !results.length){
 
         return (
-            <div>
+            <div className="top-pick-gallery">
                 <div>
                     <div className="welcome">
-                            <p className="disclaimer">DISCLAIMER: Stewdio Radio is not responsible for broken links from station providers.</p>
                             <h2 className="welcome-message">This Month's Top Picks</h2>
                     </div>
                     <div className="top-pick">

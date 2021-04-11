@@ -9622,6 +9622,11 @@ react-event-listener@^0.6.2:
     prop-types "^15.6.0"
     warning "^4.0.1"
 
+react-external-link@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/react-external-link/-/react-external-link-1.2.1.tgz"
+  integrity sha512-+VrL2b1VrDuFA1XEwzf/mb7Iqh/79YQK5TglOiT5Qd28bKPIsSFsI/bmE5M8QRFn3Mb5i6iQCKcvuBOWxV/onQ==
+
 react-fast-compare@^3.0.1:
   version "3.2.0"
   resolved "https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.0.tgz"

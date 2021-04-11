@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
 .App {
   text-align: center;
 }
@@ -14,7 +16,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,9 +30,39 @@
   color: #61dafb;
 }
 
+.stations-gallery{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* width: 90%; */
+  margin: 0 20px 0 20px;
+}
+
 .station{
-  border: 1px solid white;
-  margin: 50px 0;
+  border-radius: 8px;
+  background-color: #21333f;
+  box-shadow: -8px 10px 4.1px 0 rgba(0, 0, 0, 0.355);
+  margin: 50px 50px;
+  
+}
+
+.welcome{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome-message{
+  display: flex;
+  justify-content: center;
+}
+
+.top-pick{
+  width: 350px;
+  border-radius: 8px;
+  background-color: #21333f;
+  box-shadow: -8px 10px 4.1px 0 rgba(0, 0, 0, 0.355);
+  margin: 50px 50px;
 }
 
 .radio-list{
@@ -46,14 +78,17 @@
 }
 
 .brand{
+  font-family: 'Comfortaa', cursive;
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-top: 150px;
+  transform: translateX(-2%);
 }
 
 .logo-app-name{
-  margin-left: -20px;
+  font-size: 45px;
+  transform: translateX(-5%);
 }
 
 .media-player{
@@ -76,31 +111,23 @@
 #result-country{
   padding: 3px 1px;
   border-radius: 12px;
+  background-color:#1f2f3a;
+  color: #a6bac9;
 }
 
 #result-genre{
   padding: 3px 1px;
   border-radius: 12px;
+  background-color:#1f2f3a;
+  color: #a6bac9;
 }
 
 .disclaimer{
   font-size: 10px;
 }
 
-.welcome{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.welcome-message{
-  display: flex;
-  justify-content: center;
-}
-
-.top-pick{
-  border: 1px solid white;
-  margin: 50px 0;
+.donate-button{
+  color: #a6bac9;
 }
 
 
@@ -123,11 +150,7 @@
     color: #61dafb;
   }
   
-  .station{
-    border: 1px solid white;
-    margin: 50px 0;
-  }
-  
+
   .radio-list{
     display: flex;
     flex-direction: column;
@@ -194,8 +217,100 @@
   }
   
   .top-pick{
-    border: 1px solid white;
-    margin: 50px 0;
+    width: 80%;
+  }
+  
+}
+
+@media screen and (min-width: 601px){
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+    width:  400px;
+    height: 400px;
+  }
+
+  .App-link {
+    color: #61dafb;
+  }
+  
+  
+  .radio-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .brand{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 150px; 
+  }
+  
+  
+  .user-search{
+    padding: 0 8px 0 8px;
+    margin: 0;
+    transform: translateY(30%);
+  }
+  
+  .ResultCountry{
+    margin: 12px 12px;
+    transform: translate(-23%, -300%);
+  }
+  
+  .ResultGenre{
+    margin: 12px 12px;
+    transform: translate(-23%, -300%);
+  }
+  
+  .search-button{
+    padding:  0.45rem 2rem;
+    transform: translate(360%, -130.5%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #result-country{
+    padding: 3px 1px;
+    border-radius: 12px;
+  }
+  
+  #result-genre{
+    padding: 3px 1px;
+    border-radius: 12px;
+  }
+  
+  .disclaimer{
+    font-size: 15px;
+  }
+  
+  .welcome{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .welcome-message{
+    display: flex;
+    justify-content: center;
+  }
+
+  .top-pick{
+    margin: 50px 550px;
+  }
+
+  .station{
+    margin: 25px 25px;
+    width: 390px;
+  }
+  
+  .stations-gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  
   }
   
 }
