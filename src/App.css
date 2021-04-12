@@ -162,7 +162,7 @@
     padding: 0 8px 0 8px;
     margin: 0;
     position: relative;
-    transform: translate(-10%, 4%);
+    transform: translate(-9%, 4%);
   }
   
   .ResultCountry{
@@ -179,7 +179,7 @@
   }
   
   .search-button{
-    transform: translate(230%, -135%);
+    transform: translate(227%, -135%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -197,7 +197,7 @@
 
   .top-pick-gallery{
     display: inline-block;
-    transform: translate(-4%, -7%)
+    transform: translate(-5.5%, -7%)
 
   }
 
