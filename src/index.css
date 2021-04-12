@@ -68,7 +68,20 @@ button {
 
 @media screen and (max-width: 419px) {
 
+  /* nav{
+    width: 93.5%; 
+    transform: translatX(-20%);
+    margin: 2px 2px 0 2px;
+    padding-top: 55px;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3000;
+  } */
+
   header{
+    margin-top: 20px;
     display: flex;
     justify-content: center;
   }
@@ -77,7 +90,6 @@ button {
   input {
     width:62%;
     margin: 2px 0;
-    transform: translateX(-0.5%);
   }
   
   button {
