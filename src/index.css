@@ -68,12 +68,16 @@ button {
 
 @media screen and (max-width: 419px) {
 
+  header{
+    display: flex;
+    justify-content: center;
+  }
   
   
   input {
-    width:88%;
+    width:62%;
     margin: 2px 0;
-    transform: translateX(-1%);
+    transform: translateX(-0.5%);
   }
   
   button {

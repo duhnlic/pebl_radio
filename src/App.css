@@ -149,6 +149,10 @@
   .App-logo {
     height: 40vmin;
   }
+
+  .brand{
+    transform: translateX(-3.5%);
+  }
    
   .logo-app-name{
     margin-left: -20px;
@@ -157,26 +161,42 @@
   .user-search{
     padding: 0 8px 0 8px;
     margin: 0;
+    position: relative;
+    transform: translateY(20%);
   }
   
   .ResultCountry{
-    transform: translateX(9.5%);
+    transform: translate(-1.5%, -180%);
   }
   
   .ResultGenre{
-    transform: translateX(9.5%);
+    display: flex;
+    flex-direction: column;
+    transform: translate(-1.5%, -185%);
+    margin-right: 160px;
   }
   
   .search-button{
-    transform: translate(82%, 2.5%);
+    transform: translate(263%, -135%);
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .top-pick{
-    width: 80%;
+  .welcome-message{
+    transform:translateX(17.5%)
   }
+
+  .top-pick{
+    width: 100%;
+    
+  }
+
+  .top-pick-gallery{
+    display: inline-block;
+
+  }
+
   
 }
 
