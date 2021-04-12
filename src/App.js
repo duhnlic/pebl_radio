@@ -164,7 +164,7 @@ export default function App () {
       setPlayPause={setPlayPause}
       setTrue={setTrue}/>
       <footer>
-        <p className="credits">This App was created by Brian Stewart</p>
+        <p className="credits">Created by Brian Stewart</p>
         <DonationLink/>
       </footer>
     </Router>

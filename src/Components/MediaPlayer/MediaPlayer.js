@@ -6,17 +6,19 @@ import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import  play from '../../shared/radio_icon2.svg';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    // justifyContent: 'center'
     backgroundColor: '#2f4858',
     color: '#a6bac9',
     boxShadow: '-8px 14px 4.1px 0 rgba(0, 0, 0, 0.225)',
     position: 'fixed',
     zIndex: '3000',
-    width: '95%',
+    width: '94%',
+    height: 'auto',
     
   },
   details: {
@@ -71,9 +73,9 @@ export default function MediaControlCard({handlePlay, currentStation, currentCou
                 </div>
             </div>
             <CardMedia
-                className={classes.cover}
-                image={play}
-                title="Live from space album cover"
+                // className={classes.cover}
+                // image={play}
+                // title="Radio_Icon"
             />
             </Card>
         

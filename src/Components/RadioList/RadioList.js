@@ -87,7 +87,7 @@ const RadioList = ({results, setCurrentMedia, setCurrentStation, setCurrentCount
     return(
         <div className="stations-gallery">
             {results.map((stationObject, x) =>{
-                if (x < 50){
+                if (x < 500){
                 return(
                 <div key={stationObject.i} className="station">
                     <div className="radio-list">

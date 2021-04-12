@@ -34,7 +34,7 @@ footer{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
   border-top: 1px solid #677d90;
   background-color: #0b1920;
   color: #476b85;
@@ -57,7 +57,6 @@ button {
   background-color: #39566a;
   border: 2px solid #1d2e38;
   border-radius: 2rem;
-  color: var(--white);
   flex-grow: 0;
   font-size: 1.2rem;
   line-height: 1;
@@ -67,47 +66,18 @@ button {
 }
 
 
-@media screen and (max-width: 396px) {
+@media screen and (max-width: 419px) {
 
   
-  nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0;
-  }
-  
-  header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0;
-  }
   
   input {
-    background-color: #202b32;
-    border: 5px solid #2f4858;
-    border-radius: .3rem;
-    color: #a6bac9;
-    flex-grow: 1;
-    font-size: 1.2rem;
-    padding: 0.75rem 1rem;
     width:88%;
     margin: 2px 0;
     transform: translateX(-1%);
   }
   
   button {
-    background-color: #39566a;
     border: 0;
-    border-radius: 2rem;
-    /* color: var(--white); */
-    flex-grow: 0;
-    font-size: 1.2rem;
-    line-height: 1;
-    padding:  0.25rem 2rem;
-    text-transform: uppercase;
-    margin: 1rem 1rem;
   }
   
 }
@@ -115,42 +85,24 @@ button {
 @media screen and (min-width: 601px){
    
   nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0;
+    width:50%;
+    transform: translateX(50%);
+    position: fixed;
+    z-index: 3000;
   }
   
   header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 1rem 0 0 0;
   }
   
   input {
-    background-color: #202b32;
-    border: 5px solid #2f4858;
-    border-radius: .3rem;
-    color: #a6bac9;
-    flex-grow: 1;
-    font-size: 1.2rem;
-    padding: 0.75rem 1rem;
     width:100%;
     margin: 1px 20px 0 0;
     transform: translateX(-18%);
   }
   
   button {
-    background-color: #39566a;
     border: 0;
-    border-radius: 2rem;
-    flex-grow: 0;
-    font-size: 1.2rem;
-    line-height: 1;
-    padding:  0.25rem 2rem;
-    text-transform: uppercase;
-    margin: 1rem 1rem;
   }
 
 }
