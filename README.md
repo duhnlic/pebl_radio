@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Pebl Radio
+*A world internet radio application.*
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ 
+___
+![Pebl App Mobile View](https://i.imgur.com/VPYmEZR.png)
 
-## Available Scripts
+![Pebl App Desktop View](https://i.imgur.com/W0JXAL6.png)
+___
+Although the structure of Pebl is as small as a pebble, this radio application opens the user up to 30,000 worldwide radio stations as well as the curation of the folks behind the app.
 
-In the project directory, you can run:
+**Link to site:** https://duhnlic.github.io/pebl_radio/
 
-### `yarn start`
+### App summary:
+Pebl Radio is a very small radio application. It uses an API of 30,000 worldwide radio station, allowing the user to search any kind of radio station by keyword, country, and genre. Once a user finds a station they like and want to listen to it, it can be played in app. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Technologies used:
+- HTML
+- CSS: Flexbox, media query
+- React (JSX)
+- API Fetch
+___
+## Wins & Loses:
+### Hidden Media Player
+Media Players are notoriously unable to be customized. I was very proud that I was able to use a very ugly, but incredibly stable media player and hide it, giving functionality over to the material-ui Media Control Card. 
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+_____
+###Radio List Component
+Returns Hardcoded Monthly Top Picks when the user loads the app or conducts a failed search; Otherwise it returns the data from the API.
+![Snippet](https://i.imgur.com/aCU1WQe.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+_____
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  
+ ### Broken Links
+ I was not able to figure out a reliable way for the application to check whether a station URL was alive or dead coming from the API. 
