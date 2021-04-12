@@ -65,6 +65,25 @@ button {
   margin: 1rem 1rem;
 }
 
+@media screen and (max-width: 360px) {
+
+  header{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  input {
+    width:22%;
+    margin: 2px 0;
+  }
+  
+  button {
+    border: 0;
+  }
+  
+}
 
 @media screen and (max-width: 419px) {
 
@@ -76,7 +95,7 @@ button {
   
   
   input {
-    width:62%;
+    width:61.5%;
     margin: 2px 0;
   }
   

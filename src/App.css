@@ -156,6 +156,7 @@
    
   .logo-app-name{
     font-size: 30px;
+    transform: translateX(-10%);
   }
   
   .user-search{
@@ -204,6 +205,49 @@
   .disclaimer{
     transform: translateY(-600%);
     font-size: 9px;
+  }
+
+  
+}
+
+@media screen and (max-width: 360px){  
+
+  .logo-app-name{
+    font-size: 22px;
+    transform: translateX(-25%)
+
+  }
+  
+  .user-search{
+    transform: translate(-3%, 4%);
+  }
+  
+  .ResultCountry{
+    transform: translate(3%, -205%);
+  }
+  
+  .ResultGenre{
+    transform: translate(6.3%, -185%);
+  }
+  
+  .search-button{
+    transform: translate(320%, 80%);
+    padding: 10px;
+  }
+
+  .welcome-message{
+    transform:translateX(19%)
+  }
+
+  .top-pick-gallery{
+    display: inline-block;
+    transform: translate(-14%, -7%)
+
+  }
+
+  .disclaimer{
+    transform: translateY(-250%);
+    font-size: 8px;
   }
 
   
