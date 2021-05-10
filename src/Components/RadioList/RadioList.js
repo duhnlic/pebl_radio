@@ -91,18 +91,18 @@ const RadioList = ({results, setCurrentMedia, setCurrentStation, setCurrentCount
                 return(
                 <div key={stationObject.i} className="station">
                     <div className="radio-list">
-                        <h3>{stationObject.n}</h3>
-                        <p>{stationObject.g}</p>
-                        <p>{stationObject.c}</p>
+                        <h3>{stationObject.name}</h3>
+                        <p>{stationObject.tags}</p>
+                        <p>{stationObject.country}</p>
                         <img src={radio} height="30" width="30" alt="station-logo"></img>
                     </div>
                     <div  className="radio-button">
                         <button 
                         onClick={() => { 
-                                setCurrentMedia(stationObject.u)
-                                setCurrentStation(stationObject.n)
-                                setCurrentCountry(stationObject.c)
-                                setCurrentGenre(stationObject.g)
+                                setCurrentMedia(stationObject.url_resolved)
+                                setCurrentStation(stationObject.name)
+                                setCurrentCountry(stationObject.country)
+                                setCurrentGenre(stationObject.tags)
                                 setTrue()
                             }
                         }>

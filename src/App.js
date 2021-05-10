@@ -41,8 +41,8 @@ const routes = [
 export default function App () {
   const [searchString, setSearchString] = useState('');
   const [results, setResults] = useState([]);
-  const [resultCountry, setResultCountry] = useState('ALL');
-  const [resultGenre, setResultGenre] = useState('ALL');
+  const [resultCountry, setResultCountry] = useState('');
+  const [resultTag, setResultTag] = useState('');
   const [currentMedia, setCurrentMedia] = useState('');
   const [currentStation, setCurrentStation] = useState('');
   const [currentCountry, setCurrentCountry] = useState('');
@@ -51,22 +51,21 @@ export default function App () {
   const audioElement = useRef(null);
 
   const apiKey = process.env.REACT_APP_STATION_KEY;
-  const apiRoot = 'https://30-000-radio-stations-and-music-charts.p.rapidapi.com/rapidapi?country=';
-  const keyword = '&keyword=';
-  const genreRoot = '&genre=';
+  const apiRoot = 'https://radio-browser.p.rapidapi.com/json/stations/byname/';
+  const apiExtend = 'reverse=false&offset=0&limit=10000&hidebroken=true';
 
   const getStations= async () => {
-    console.log(`${apiRoot}${resultCountry}${keyword}${encodeURI(searchString)}${genreRoot}${resultGenre}`)
+    console.log(`${apiRoot}${encodeURI(searchString)}?${resultCountry}${resultTag}${apiExtend}`)
     try {
-      const res = await fetch(`${apiRoot}${resultCountry}${keyword}${encodeURI(searchString)}${genreRoot}${resultGenre}`, {
+      const res = await fetch(`${apiRoot}${encodeURI(searchString)}?${resultCountry}${resultTag}${apiExtend}`, {
         "method": "GET",
         "headers": {
           "x-rapidapi-key": `${apiKey}`,
-          "x-rapidapi-host": "30-000-radio-stations-and-music-charts.p.rapidapi.com"
+          "x-rapidapi-host": "radio-browser.p.rapidapi.com"
         }
       });
       const data = await res.json();
-      setResults(data.results);
+      setResults(data);
       setSearchString('');
       // console.log(data)
       // for (let i = 0; i < 20; i++){
@@ -93,7 +92,7 @@ export default function App () {
   }
 
   function handleGenreChange(event) {
-    setResultGenre(event.target.value);
+    setResultTag(event.target.value);
   }
 
   function setTrue(){
