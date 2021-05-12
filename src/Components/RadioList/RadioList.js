@@ -1,6 +1,7 @@
 import play from '../../shared/play_push_icon.svg'
 import radio from '../../shared/radio_icon2.svg'
 
+
 const RadioList = ({results, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setPlayPause, setTrue}) =>{
     // console.log(JSON.stringify(results, null, 2));
     // return early if there are no stations
@@ -94,7 +95,7 @@ const RadioList = ({results, setCurrentMedia, setCurrentStation, setCurrentCount
                         <h3>{stationObject.name}</h3>
                         <p>{stationObject.tags}</p>
                         <p>{stationObject.country}</p>
-                        <img src={radio} height="30" width="30" alt="station-logo"></img>
+                        <img src={!stationObject.favicon ? radio : stationObject.favicon} height="50" width="50" alt="station-logo"></img>
                     </div>
                     <div  className="radio-button">
                         <button 
