@@ -97,7 +97,7 @@ export default function App () {
     const getStationData = async () => {
       try{
         const result = await fetch(
-          `http://localhost:8000/user/${window.localStorage.getItem(
+          `https://worldwide-radio-database.herokuapp.com/${window.localStorage.getItem(
             "username"
           )}`,
           {
@@ -154,51 +154,49 @@ export default function App () {
 
 
   // Create
-  // const [formData, setFormData] = useState({
-  // label: "",
-  // url: "",
-  // tags: []
-  // });
+  const [stationData, setStationData] = useState({
 
-  // const createFavorite = async (e) => {
-  // e.preventDefault();
-  // const body = { ...formData };
-  // try {
-  // // const response = await fetch("http://localhost:8000/bookmarks", {
-  // //   method: "POST",
-  // //   headers: {
-  // //     "Content-Type": "application/json"
-  // //   },
-  // //   body: JSON.stringify(body)
-  // // });
-  // // const bookmark = await response.json();
-  // const addBookmark = await fetch(
-  //   "http://localhost:8000/user/addBookmarkToUser",
-  //   {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Authorization": `Bearer ${window.localStorage.getItem("token")}`
+  });
 
-  //     },
-  //     body: JSON.stringify({
-  //       ...body,
-  //       username: window.localStorage.getItem("username")
-  //     })
-  //   }
-  // );
-  // const data = await addBookmark.json();
-  // setFormData({
-  //   label: "",
-  //   url: "",
-  //   tags: []
+  const createFavorite = async (e) => {
+  e.preventDefault();
+  const body = { ...stationData };
+  try {
+  // const response = await fetch("http://localhost:8000/bookmarks", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json"
+  //   },
+  //   body: JSON.stringify(body)
   // });
-  // } catch (err) {
-  // console.error(err);
-  // } finally {
-  // await getBookmarkData();
-  // }
-  // };
+  // const bookmark = await response.json();
+  const addStation = await fetch(
+    `https://worldwide-radio-database.herokuapp.com/${window.localStorage.getItem(
+      "username"
+    )}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${window.localStorage.getItem("token")}`
+
+      },
+      body: JSON.stringify({
+        ...body,
+        username: window.localStorage.getItem("username")
+      })
+    }
+  );
+  // const data = await addStation.json();
+  // setStationData({
+
+  // });
+  } catch (err) {
+  console.error(err);
+  } finally {
+  await getStationData();
+  }
+  };
   // const handleChange = (e) => {
   //   setFormData({ ...formData, [e.target.id]: e.target.value });
   //   if (e.target.id === "tags"){
@@ -305,3 +303,4 @@ export default function App () {
     </Router>
   );
 }
+
