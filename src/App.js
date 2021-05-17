@@ -11,7 +11,7 @@ import ReactAudioPlayer from 'react-audio-player';
 import DonationLink from './Components/DonationLink/DonationLink';
 import { Canvas } from '@react-three/fiber';
 import World from './Components/3Dworld/3Dworld';
-import Particles from './Components/Particles/Particles'
+import Profile from './Components/Profile/Profile'
 
 // Save the Component, key and path in an array of objects for each Route
 // You could write all routes by hand but I'm lazy and this lets me use
@@ -50,7 +50,9 @@ export default function App () {
   const [currentCountry, setCurrentCountry] = useState('');
   const [currentGenre, setCurrentGenre] = useState('');
   const [playPause, setPlayPause] = useState(true);
+  const [currentId, setCurrentId] =  useState('');
   const audioElement = useRef(null);
+
 
 
 
@@ -159,6 +161,7 @@ export default function App () {
   });
 
   const createFavorite = async (e) => {
+  console.log("This link was successful!")
   e.preventDefault();
   const body = { ...stationData };
   try {
@@ -171,7 +174,7 @@ export default function App () {
   // });
   // const bookmark = await response.json();
   const addStation = await fetch(
-    `https://worldwide-radio-database.herokuapp.com/${window.localStorage.getItem(
+    `https://worldwide-radio-database.herokuapp.com/addStation/${currentId}/${window.localStorage.getItem(
       "username"
     )}`,
     {
@@ -187,7 +190,7 @@ export default function App () {
       })
     }
   );
-  // const data = await addStation.json();
+  const data = await addStation.json();
   // setStationData({
 
   // });
@@ -204,13 +207,16 @@ export default function App () {
   //   }
   // };
 
-
-
-
   function handleChange(event) {
     setSearchString(event.target.value);
   }
 
+
+  function handleFavoriteAdd(event) {
+    createFavorite()
+  }
+
+// HANDLE SUBMIT FOR THIRD PARTY API
   function handleSubmit(event) {
     event.preventDefault();
     getStations(searchString);
@@ -227,6 +233,10 @@ export default function App () {
 
   function setTrue(){
     setPlayPause(true)
+  }
+
+  function handleStationId(){
+
   }
 
 
@@ -256,6 +266,9 @@ export default function App () {
             currentStation={currentStation}
             currentCountry={currentCountry}
             currentGenre={currentGenre}
+            results={results}
+            currentId={currentId}
+            handleFavoriteAdd={handleFavoriteAdd}
           />
           <ReactAudioPlayer className="media-player"
             src= {currentMedia}
@@ -288,18 +301,22 @@ export default function App () {
               />))
         }
       </Switch> */}
-      {/* <RadioList 
+      <Profile
+        results={results}
+      />
+      <RadioList 
       setCurrentMedia={setCurrentMedia}
       setCurrentStation={setCurrentStation}
       setCurrentCountry={setCurrentCountry}
       setCurrentGenre={setCurrentGenre}
+      setCurrentId={setCurrentId}
       results={results}
       setPlayPause={setPlayPause}
-      setTrue={setTrue}/> */}
-      {/* <footer>
+      setTrue={setTrue}/>
+      <footer>
         <p className="credits">Created by Brian Stewart</p>
         <DonationLink/>
-      </footer> */}
+      </footer>
     </Router>
   );
 }

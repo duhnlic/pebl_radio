@@ -10,6 +10,7 @@ import FavoriteButton from '../FavoriteButton/FavoriteButton'
 import Button from '@material-ui/core/Button';
 
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -52,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 
 // add a handlePLayPause function to control icon button play vs pause 
 
-export default function MediaControlCard({handlePlay, currentStation, currentCountry, currentGenre}) {
+export default function MediaControlCard({handlePlay, currentStation, currentCountry, currentGenre, currentId,handleFavoriteAdd}) {
   const classes = useStyles();
 
     return (
@@ -77,7 +78,10 @@ export default function MediaControlCard({handlePlay, currentStation, currentCou
                 </IconButton>
                 </div>
                 
-                  <FavoriteButton/> 
+                  <FavoriteButton
+                    currentId={currentId}
+                    handleFavoriteAdd={handleFavoriteAdd}
+                  /> 
             </div>
             <CardMedia
                 // className={classes.cover}

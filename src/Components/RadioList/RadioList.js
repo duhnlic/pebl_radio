@@ -2,7 +2,7 @@ import play from '../../shared/play_push_icon.svg'
 import radio from '../../shared/radio_icon2.svg'
 
 
-const RadioList = ({results, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setPlayPause, setTrue}) =>{
+const RadioList = ({results, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setCurrentId, setPlayPause, setTrue}) =>{
     // console.log(JSON.stringify(results, null, 2));
     // return early if there are no stations
     if (results === undefined || !results.length){
@@ -27,6 +27,7 @@ const RadioList = ({results, setCurrentMedia, setCurrentStation, setCurrentCount
                                         setCurrentStation('Soma FM: Beat Blender')
                                         setCurrentCountry('US')
                                         setCurrentGenre('Downtempo & Deep House')
+                                        setCurrentId('4545454545')
                                         setTrue()
                                     }
                                 }>
@@ -50,6 +51,7 @@ const RadioList = ({results, setCurrentMedia, setCurrentStation, setCurrentCount
                                         setCurrentStation('Acid Jazz FM')
                                         setCurrentCountry('US')
                                         setCurrentGenre('Jazz & World')
+                                        setCurrentId()
                                         setTrue()
                                     }
                                 }>
@@ -73,6 +75,7 @@ const RadioList = ({results, setCurrentMedia, setCurrentStation, setCurrentCount
                                         setCurrentStation('From Left Field')
                                         setCurrentCountry('US')
                                         setCurrentGenre('Jazz & World')
+                                        setCurrentId()
                                         setTrue()
                                     }
                                 }>
@@ -93,17 +96,18 @@ const RadioList = ({results, setCurrentMedia, setCurrentStation, setCurrentCount
                 <div key={stationObject.i} className="station">
                     <div className="radio-list">
                         <h3>{stationObject.name}</h3>
-                        <p>{stationObject.tags}</p>
+                        <p>{stationObject.genre}</p>
                         <p>{stationObject.country}</p>
                         <img src={!stationObject.favicon ? radio : stationObject.favicon} height="50" width="50" alt="station-logo"></img>
                     </div>
                     <div  className="radio-button">
                         <button 
                         onClick={() => { 
-                                setCurrentMedia(stationObject.url_resolved)
+                                setCurrentMedia(stationObject.url)
                                 setCurrentStation(stationObject.name)
                                 setCurrentCountry(stationObject.country)
-                                setCurrentGenre(stationObject.tags)
+                                setCurrentGenre(stationObject.genre)
+                                setCurrentId(stationObject._id)
                                 setTrue()
                             }
                         }>
