@@ -1,19 +1,29 @@
 
-const Profile  =({results})=>{
+import NavBar from '../NavBar/NavBar'
+const Profile  =({stations, isLoggedIn})=>{
 
-    return(
-        <div>
-            <div className="badge">
+    return (
+        <div className="profile-page">
+            <NavBar/>
+          {/* {isLoggedIn ? (
+            <> */}
+        <div className="badge">
 {/* chosen icon */}
 {/* username */}
 {/*  */}
-            </div>
-            <div className="favorites">
-
-            </div>
-
         </div>
-    )
+        <div className="favorites">
+        
+        </div>
+              {/* )
+            </>
+          ) : (
+            "Not Logged In"
+          )} */}
+        </div>
+      );
+
 }
 
 export default Profile;
+

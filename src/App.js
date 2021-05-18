@@ -1,43 +1,17 @@
 // import './App.css';
-import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { useState, useRef, useEffect } from "react";
-import Other from './Other'
-import Home from './Home'
-import UserSearchBar from './Components/UserSearchBar/UserSearchBar'
-import logo from './shared/App_Icon.svg'
-import RadioList from './Components/RadioList/RadioList'
-import MediaControlCard from './Components/MediaPlayer/MediaPlayer'
+import UserSearchBar from './Components/UserSearchBar/UserSearchBar';
+import logo from './shared/App_Icon.svg';
+import RadioList from './Components/RadioList/RadioList';
+import MediaControlCard from './Components/MediaPlayer/MediaPlayer';
 import ReactAudioPlayer from 'react-audio-player';
 import DonationLink from './Components/DonationLink/DonationLink';
 import { Canvas } from '@react-three/fiber';
 import World from './Components/3Dworld/3Dworld';
-import Profile from './Components/Profile/Profile'
-
-// Save the Component, key and path in an array of objects for each Route
-// You could write all routes by hand but I'm lazy and this lets me use
-// the map method to just loop over them and make my routes
-// SWITCH is used so that it only ever matches one route at a time
-// If you don't want to use react router just rewrite the app component to not use it
-
-const routes = [
-  {
-    Component: Other,
-    key: 'Search',
-    path: '/search'
-  },
-  {
-    Component: Other,
-    key: 'Another',
-    path: '/another'
-  },
-  {
-    Component: Home,
-    key: 'Home',
-    path: '/'
-  }
-]
-
-
+import Profile from './Components/Profile/Profile';
+import Home from './Components/Home/Home';
+import CuratedStations from './Components/CuratedStations/CuratedStations'
 
 
 export default function App () {
@@ -94,9 +68,9 @@ export default function App () {
     /* END AUTHENTICATION */
 
 
-    //get radio stations
-    const [stations, setStations] = useState([])
-    const getStationData = async () => {
+    //get user data for profile page
+    const [userProfile, setUserProfile] = useState([])
+    const getProfileData = async () => {
       try{
         const result = await fetch(
           `https://worldwide-radio-database.herokuapp.com/${window.localStorage.getItem(
@@ -111,15 +85,42 @@ export default function App () {
           }
         );
         const data = await result.json();
+        console.log()
+        setUserProfile([...data.stations]);
+      } catch(err) {
+        console.log(err);
+      }
+    }
+  
+    // useEffect(() => {
+    //   getProfileData();
+    // }, []);
+
+
+    //get radio stations
+    const [stations, setStations] = useState([])
+    const getStationData = async () => {
+      try{
+        const result = await fetch(
+          `https://worldwide-radio-database.herokuapp.com/stations`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }
+        );
+        const data = await result.json();
+        console.log()
         setStations([...data.stations]);
       } catch(err) {
         console.log(err);
       }
     }
   
-    useEffect(() => {
-      getStationData();
-    }, []);
+    // useEffect(() => {
+    //   getStationData();
+    // }, []);
 
 
 
@@ -165,14 +166,6 @@ export default function App () {
   e.preventDefault();
   const body = { ...stationData };
   try {
-  // const response = await fetch("http://localhost:8000/bookmarks", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json"
-  //   },
-  //   body: JSON.stringify(body)
-  // });
-  // const bookmark = await response.json();
   const addStation = await fetch(
     `https://worldwide-radio-database.herokuapp.com/addStation/${currentId}/${window.localStorage.getItem(
       "username"
@@ -256,11 +249,7 @@ export default function App () {
 
   return (
     <Router>
-      <World/>
-      <div className="threeBackground">
-      </div>
       <nav>
-        {routes.map(route => <Link key={route.key} to={route.path}>{route.key}</Link>)}
           <MediaControlCard
             handlePlay={handlePlay}
             currentStation={currentStation}
@@ -277,42 +266,61 @@ export default function App () {
             // controls
           />
       </nav>
-      {/* <header>
+      <header>
         <div className="brand">
             <img src={logo} width="200" height="200" className="App-logo" alt="Pebl Internet Radio App" />
             <h1 className="logo-app-name">Pebl Radio</h1>
         </div>
-        <UserSearchBar
+        {/* <UserSearchBar
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           searchString={searchString}
           handleCountryChange={handleCountryChange}
           handleGenreChange={handleGenreChange}
-        />
-        <p className="disclaimer">DISCLAIMER: Pebl Radio is not responsible for broken links from station providers.</p>
-      </header> */}
-      {/* <Switch>
-        {
-          routes.map(({key, Component, path}) => (
-            <Route
-              key={key}
-              path={path}
-              component={props => <Component {...props} page={key} />}
-              />))
-        }
-      </Switch> */}
-      <Profile
-        results={results}
-      />
-      <RadioList 
+        /> 
+        <p className="disclaimer">DISCLAIMER: Pebl Radio is not responsible for broken links from station providers.</p> */}
+      </header>
+      <World/>
+      <Switch>
+        <Route exact path={"/"}> 
+          <Home
+          setCurrentMedia={setCurrentMedia} 
+          setCurrentStation={setCurrentStation}
+          setCurrentCountry={setCurrentCountry}
+          setCurrentGenre={setCurrentGenre}
+          setCurrentId={setCurrentId}
+          results={results}
+          stations={stations}
+          setPlayPause={setPlayPause}
+          setTrue={setTrue}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          searchString={searchString}
+          handleCountryChange={handleCountryChange}
+          handleGenreChange={handleGenreChange}        
+          />
+        </Route>
+        <Route exact path={"/profile"}>
+          <Profile
+            stations={stations}
+            isLoggedIn={isLoggedIn}
+          />
+        </Route>
+        <Route exact path={"/pebl-curated"}>
+          <CuratedStations/>
+        </Route>  
+      </Switch>
+      {/* <RadioList 
       setCurrentMedia={setCurrentMedia}
       setCurrentStation={setCurrentStation}
       setCurrentCountry={setCurrentCountry}
       setCurrentGenre={setCurrentGenre}
       setCurrentId={setCurrentId}
       results={results}
+      stations={stations}
       setPlayPause={setPlayPause}
-      setTrue={setTrue}/>
+      setTrue={setTrue}
+      /> */}
       <footer>
         <p className="credits">Created by Brian Stewart</p>
         <DonationLink/>

@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 
-.threeBackground {
-  position: fixed;
-  z-index: -3000;
+.navbar{
+  display: flex;
+  justify-content: center
+}
+
+.navlink {
+  margin: 20px;
 }
 
 .App {
@@ -18,16 +22,6 @@
   .App-logo {
     animation: App-logo-spin infinite 18s linear;
   }
-}
-
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
