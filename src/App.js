@@ -37,7 +37,6 @@ export default function App () {
       password: ""
     });
     const handleLogin = async (e) => {
-      e.preventDefault();
       try {
         const response = await fetch("https://worldwide-radio-database.herokuapp.com/login", {
           method: "POST",
@@ -46,6 +45,8 @@ export default function App () {
           },
           body: JSON.stringify({ ...loginForm })
         });
+        console.log(e);
+        console.log(JSON.stringify({ ...loginForm }))
         const data = await response.json();
         if (data.token) {
           window.localStorage.setItem("token", data.token);
@@ -64,6 +65,11 @@ export default function App () {
     const handleLoginChange = (e) => {
       setLoginForm({ ...loginForm, [e.target.id]: e.target.value });
     };
+
+    // useEffect(() => {
+    //   handleLogin();
+    // },[])
+
   
     /* END AUTHENTICATION */
 
@@ -304,6 +310,11 @@ export default function App () {
           <Profile
             stations={stations}
             isLoggedIn={isLoggedIn}
+            handleLoginChange={handleLoginChange}
+            handleLogin={handleLogin}
+            loginForm={loginForm}
+            setLoginForm={setLoginForm}
+            handleLogout={handleLogout}
           />
         </Route>
         <Route exact path={"/pebl-curated"}>
