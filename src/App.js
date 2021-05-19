@@ -45,7 +45,6 @@ export default function App () {
           },
           body: JSON.stringify({ ...loginForm })
         });
-        console.log(e);
         console.log(JSON.stringify({ ...loginForm }))
         const data = await response.json();
         if (data.token) {
@@ -66,20 +65,18 @@ export default function App () {
       setLoginForm({ ...loginForm, [e.target.id]: e.target.value });
     };
 
-    // useEffect(() => {
-    //   handleLogin();
-    // },[])
-
-  
+    useEffect(() => {
+      handleLogin();
+    },[])
     /* END AUTHENTICATION */
 
 
     //get user data for profile page
-    const [userProfile, setUserProfile] = useState([])
+    const [userProfile, setUserProfile] = useState({})
     const getProfileData = async () => {
       try{
         const result = await fetch(
-          `https://worldwide-radio-database.herokuapp.com/${window.localStorage.getItem(
+          `https://worldwide-radio-database.herokuapp.com/user/${window.localStorage.getItem(
             "username"
           )}`,
           {
@@ -91,20 +88,21 @@ export default function App () {
           }
         );
         const data = await result.json();
-        console.log()
-        setUserProfile([...data.stations]);
+        console.log(data)
+        setUserProfile({...data});
       } catch(err) {
         console.log(err);
       }
     }
+
   
-    // useEffect(() => {
-    //   getProfileData();
-    // }, []);
+    useEffect(() => {
+      getProfileData();
+    }, []);
 
 
     //get radio stations
-    const [stations, setStations] = useState([])
+    const [stations, setStations] = useState([]);
     const getStationData = async () => {
       try{
         const result = await fetch(
@@ -117,16 +115,17 @@ export default function App () {
           }
         );
         const data = await result.json();
-        console.log()
-        setStations([...data.stations]);
+        setStations([...data]);
       } catch(err) {
         console.log(err);
-      }
+      }   
     }
   
-    // useEffect(() => {
-    //   getStationData();
-    // }, []);
+    useEffect(() => {
+      getStationData();
+
+    }, []);
+
 
 
 
@@ -152,10 +151,11 @@ export default function App () {
       // console.log(data)
       // for (let i = 0; i < 20; i++){
         // console.log(JSON.stringify(data.results[i], null, 2))
-      // }
-    } catch(err){
-      console.log(err);
-    }
+        // }
+      } catch(err){
+        console.log(err);
+      }
+      console.log(results)
   }
 
 
@@ -163,17 +163,14 @@ export default function App () {
 
 
   // Create
-  const [stationData, setStationData] = useState({
-
-  });
+  const [stationData, setStationData] = useState({});
 
   const createFavorite = async (e) => {
   console.log("This link was successful!")
-  e.preventDefault();
   const body = { ...stationData };
   try {
   const addStation = await fetch(
-    `https://worldwide-radio-database.herokuapp.com/addStation/${currentId}/${window.localStorage.getItem(
+    `https://worldwide-radio-database.herokuapp.com/user/addStation/${currentId}/${window.localStorage.getItem(
       "username"
     )}`,
     {
@@ -234,11 +231,6 @@ export default function App () {
     setPlayPause(true)
   }
 
-  function handleStationId(){
-
-  }
-
-
   function handlePlay(event){
     if (playPause === true){
     audioElement.current.audioEl.current.pause()
@@ -251,7 +243,6 @@ export default function App () {
     }
   }
 
-  // useEffect(()=>{},[])
 
   return (
     <Router>
@@ -296,7 +287,6 @@ export default function App () {
           setCurrentGenre={setCurrentGenre}
           setCurrentId={setCurrentId}
           results={results}
-          stations={stations}
           setPlayPause={setPlayPause}
           setTrue={setTrue}
           handleChange={handleChange}
@@ -308,17 +298,31 @@ export default function App () {
         </Route>
         <Route exact path={"/profile"}>
           <Profile
-            stations={stations}
+            userProfile={userProfile}
             isLoggedIn={isLoggedIn}
             handleLoginChange={handleLoginChange}
             handleLogin={handleLogin}
             loginForm={loginForm}
             setLoginForm={setLoginForm}
             handleLogout={handleLogout}
+            setCurrentMedia={setCurrentMedia} 
+            setCurrentStation={setCurrentStation}
+            setCurrentCountry={setCurrentCountry}
+            setCurrentGenre={setCurrentGenre}
+            setTrue={setTrue}
           />
         </Route>
         <Route exact path={"/pebl-curated"}>
-          <CuratedStations/>
+          <CuratedStations
+            stations={stations}
+            setCurrentMedia={setCurrentMedia} 
+            setCurrentStation={setCurrentStation}
+            setCurrentCountry={setCurrentCountry}
+            setCurrentGenre={setCurrentGenre}
+            setCurrentId={setCurrentId}
+            setPlayPause={setPlayPause}
+            setTrue={setTrue}
+          />
         </Route>  
       </Switch>
       {/* <RadioList 
