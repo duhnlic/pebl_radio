@@ -1,20 +1,36 @@
 import play from '../../shared/play_push_icon.svg'
 import radio from '../../shared/radio_icon2.svg'
 import NavBar from '../NavBar/NavBar'
-const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, setLoginForm, handleLoginChange, handleLogout, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setTrue})=>{
+import  {NavLink} from 'react-router-dom';
+import {useEffect} from 'react';
+const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, setLoginForm, handleLoginChange, handleLogout, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setTrue, getProfileData})=>{
+  console.log(userProfile.stations)
 
-    return (
+    useEffect(() => {
+      getProfileData();
+    }, [isLoggedIn]);
+
+  if(userProfile.username){
+  return (
+    <div>
         <div className="profile-page">
             <NavBar/>
-          {isLoggedIn ? (
-            <>
+            <center>
             <h1>Profile Header Placeholder</h1>
-            <button onClick={handleLogout}>Log Out Here</button>
-        <div className="badge">
-{/* chosen icon */}
-{/* username */}
-{/*  */}
+            <button onClick={handleLogout}>Log Out Here</button> 
+            </center>
+         <div className="badge">
+            {/* chosen icon
+            username */}
+
         </div>
+        </div>
+        {!userProfile.stations.length ? 
+        <>
+        <center>
+          <h1>You Don't have any stations.</h1>
+        </center>
+        </>:
         <div className="favorites">
         {userProfile.stations.map((stationObject, x) =>{
                 if (x < 2000){
@@ -41,12 +57,14 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, setLoginForm,
                     </div>
                 </div>
             )}})}
-        
         </div>
-              )
-            </>
-          ) : (
-            <>
+  }
+      </div>
+        )
+  }
+
+        return(
+          <div>
           <center>
             <h1>Login to Profile</h1>
           </center>
@@ -79,13 +97,11 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, setLoginForm,
             <br />
             <input type="submit" />
           </form>
-        </>
-          )}
+          <center>
+          <h3>Don't have an account? Create one <NavLink to="/register" className="navlink">here!</NavLink></h3>
+          </center>
         </div>
-      );
-
-
-
+        );
 }
 
 export default Profile;

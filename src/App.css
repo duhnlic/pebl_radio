@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -3000;
+}
+
 .navbar{
   display: flex;
   justify-content: center
@@ -10,6 +18,8 @@
 }
 
 .App {
+  position: relative;
+  z-index: 1000;
   text-align: center;
 }
 
@@ -32,8 +42,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* width: 90%; */
+  width: 90%;
   margin: 0 20px 0 20px;
+  z-index: 1000;
 }
 
 .station{
@@ -54,6 +65,10 @@
 .welcome-message{
   display: flex;
   justify-content: center;
+}
+
+.user-search{
+  width: 60%;
 }
 
 .top-pick{

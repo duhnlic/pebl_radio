@@ -2,7 +2,7 @@ import play from '../../shared/play_push_icon.svg'
 import radio from '../../shared/radio_icon2.svg'
 
 
-const RadioList = ({ results, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setCurrentId, setPlayPause, setTrue}) =>{
+const RadioList = ({ results, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setCurrentId, setCurrentFavicon, setPlayPause, setTrue}) =>{
     // console.log(JSON.stringify(results, null, 2));
     // return early if there are no stations
     if (results === undefined || !results.length){
@@ -107,6 +107,7 @@ const RadioList = ({ results, setCurrentMedia, setCurrentStation, setCurrentCoun
                                 setCurrentStation(stationObject.name)
                                 setCurrentCountry(stationObject.country)
                                 setCurrentGenre(stationObject.tags)
+                                setCurrentFavicon(stationObject.favicon)
                                 setTrue()
                             }
                         }>

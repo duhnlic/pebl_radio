@@ -5,6 +5,8 @@ import search from '../../shared/search_icon2.svg'
 export default function UserSearchBar({ handleSubmit, handleChange, searchString, handleCountryChange, handleGenreChange }) {
 
     return (
+      <div>
+      <center>
       <form onSubmit={handleSubmit} className="user-search">
         <input
           placeholder="Search"
@@ -20,6 +22,8 @@ export default function UserSearchBar({ handleSubmit, handleChange, searchString
         {/* <FilterByCountry handleCountryChange={handleCountryChange}/> */}
         {/* <FilterByGenre handleGenreChange={handleGenreChange}/> */}
       </form>
+      </center>
+      </div>
     );
   }
 

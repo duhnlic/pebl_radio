@@ -1,4 +1,4 @@
-// import './App.css';
+import './App.css';
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { useState, useRef, useEffect } from "react";
 import UserSearchBar from './Components/UserSearchBar/UserSearchBar';
@@ -12,6 +12,8 @@ import World from './Components/3Dworld/3Dworld';
 import Profile from './Components/Profile/Profile';
 import Home from './Components/Home/Home';
 import CuratedStations from './Components/CuratedStations/CuratedStations'
+import Register from './Components/Registration/Registration'
+
 
 
 export default function App () {
@@ -23,6 +25,7 @@ export default function App () {
   const [currentStation, setCurrentStation] = useState('');
   const [currentCountry, setCurrentCountry] = useState('');
   const [currentGenre, setCurrentGenre] = useState('');
+  const [currentFavicon, setCurrentFavicon] = useState('');
   const [playPause, setPlayPause] = useState(true);
   const [currentId, setCurrentId] =  useState('');
   const audioElement = useRef(null);
@@ -66,18 +69,65 @@ export default function App () {
     };
 
     useEffect(() => {
-      handleLogin();
+      if (window.localStorage.getItem("token")){
+        setLoggedIn(true);
+      }
     },[])
     /* END AUTHENTICATION */
 
 
-    //get user data for profile page
-    const [userProfile, setUserProfile] = useState({})
-    const getProfileData = async () => {
-      try{
-        const result = await fetch(
-          `https://worldwide-radio-database.herokuapp.com/user/${window.localStorage.getItem(
-            "username"
+
+    //USER REGISTER
+
+
+    
+
+
+    const [registerForm, setRegisterForm] = useState({
+      username: "",
+      password: ""
+  })
+
+
+  const handleRegister = async (e) => {
+    const body = { ...registerForm };
+      try {
+        const response = await fetch('https://worldwide-radio-database.herokuapp.com/register', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          }, 
+          body: JSON.stringify(body, {token: window.localStorage.getItem("token")})
+        });
+      } catch (error) {
+        console.log(error);
+      } finally {
+      setRegisterForm({
+        username: "",
+        password: ""
+      })
+
+    }
+  }
+
+  const handleRegisterChange = (e) => {
+    setRegisterForm({
+      ...registerForm, [e.target.id]: e.target.value
+    })
+  }
+  
+  // useEffect(()=>{
+  //   handleRegister();
+  // },[])
+  
+  
+  //get user data for profile page
+  const [userProfile, setUserProfile] = useState({})
+  const getProfileData = async () => {
+    try{
+      const result = await fetch(
+        `https://worldwide-radio-database.herokuapp.com/user/${window.localStorage.getItem(
+          "username"
           )}`,
           {
             method: "GET",
@@ -86,19 +136,19 @@ export default function App () {
               Authorization: "Bearer " + localStorage.getItem("token")
             }
           }
-        );
-        const data = await result.json();
-        console.log(data)
-        setUserProfile({...data});
-      } catch(err) {
-        console.log(err);
+          );
+          const data = await result.json();
+          console.log(data)
+          setUserProfile({...data});
+        } catch(err) {
+          console.log(err);
+        }
       }
-    }
-
+      
   
-    useEffect(() => {
-      getProfileData();
-    }, []);
+    // useEffect(() => {
+    //   getProfileData();
+    // }, [isLoggedIn]);
 
 
     //get radio stations
@@ -246,6 +296,10 @@ export default function App () {
 
   return (
     <Router>
+      <div className="container">
+        <World/>
+        </div>
+      <div className="App">
       <nav>
           <MediaControlCard
             handlePlay={handlePlay}
@@ -253,6 +307,7 @@ export default function App () {
             currentCountry={currentCountry}
             currentGenre={currentGenre}
             results={results}
+            currentFavicon={currentFavicon}
             currentId={currentId}
             handleFavoriteAdd={handleFavoriteAdd}
           />
@@ -277,7 +332,7 @@ export default function App () {
         /> 
         <p className="disclaimer">DISCLAIMER: Pebl Radio is not responsible for broken links from station providers.</p> */}
       </header>
-      <World/>
+
       <Switch>
         <Route exact path={"/"}> 
           <Home
@@ -285,6 +340,7 @@ export default function App () {
           setCurrentStation={setCurrentStation}
           setCurrentCountry={setCurrentCountry}
           setCurrentGenre={setCurrentGenre}
+          setCurrentFavicon={setCurrentFavicon}
           setCurrentId={setCurrentId}
           results={results}
           setPlayPause={setPlayPause}
@@ -298,6 +354,7 @@ export default function App () {
         </Route>
         <Route exact path={"/profile"}>
           <Profile
+            getProfileData={getProfileData}
             userProfile={userProfile}
             isLoggedIn={isLoggedIn}
             handleLoginChange={handleLoginChange}
@@ -323,6 +380,13 @@ export default function App () {
             setPlayPause={setPlayPause}
             setTrue={setTrue}
           />
+        </Route>
+        <Route exact path={"/register"}>
+          <Register
+          handleRegister={handleRegister}
+          handleRegisterChange={handleRegisterChange} 
+          registerForm={registerForm}
+          />
         </Route>  
       </Switch>
       {/* <RadioList 
@@ -340,6 +404,7 @@ export default function App () {
         <p className="credits">Created by Brian Stewart</p>
         <DonationLink/>
       </footer>
+      </div>
     </Router>
   );
 }
