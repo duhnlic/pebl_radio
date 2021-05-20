@@ -68,11 +68,14 @@ const World =()=>{
         // scene.add( planetProfile );
 
         // create a light
-        const color = 0xFFFFFF;
-        const intensity = 2;
+        const color = 0xF3F3F3;
+        const intensity = 4;
+        const ambiIntensity = 0.31;
         const light = new THREE.DirectionalLight(color, intensity);
+        const ambientLight = new THREE.AmbientLight(color, ambiIntensity);
         light.position.set(-5, 5, 10);
         light.target.position.set(-5, 0, 0);
+        scene.add(ambientLight)
         scene.add(light);
         scene.add(light.target);
 

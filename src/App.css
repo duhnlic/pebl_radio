@@ -34,6 +34,27 @@
   }
 }
 
+.brand{
+  font-family: 'Comfortaa', cursive;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 450px;
+}
+
+.logo-app-name{
+  font-size: 400%;
+  /* transform: translateX(-5%); */
+}
+
+.slogan{
+  /* color: red; */
+}
+
+.media-player{
+  align-items: center;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -109,22 +130,6 @@
   color: #a6bac9;
 }
 
-.brand{
-  font-family: 'Comfortaa', cursive;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 450px;
-}
-
-.logo-app-name{
-  font-size: 400%;
-  /* transform: translateX(-5%); */
-}
-
-.media-player{
-  align-items: center;
-}
 
 .ResultCountry{
   margin: 12px 12px;

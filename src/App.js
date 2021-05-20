@@ -357,6 +357,7 @@ export default function App () {
         <div className="brand">
             {/* <img src={logo} width="400" height="400" className="App-logo" alt="Pebl Internet Radio App" /> */}
             <h1 className="logo-app-name">Pebl Radio</h1>
+            <h4 className="slogan">The radio app as small as a pebble</h4>
         </div>
       </header>
       <Switch>
