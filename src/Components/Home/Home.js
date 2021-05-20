@@ -3,7 +3,7 @@ import RadioList from '../RadioList/RadioList'
 import NavBar from '../NavBar/NavBar'
 
 
-export default function Home({setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setCurrentId, setCurrentFavicon, results, setPlayPause, setTrue, handleChange, handleSubmit, searchString, handleCountryChange, handleGenreChange}){
+export default function Home({setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setCurrentId, setCurrentFavicon, results, setPlayPause, setTrue, setFalse, handleChange, handleSubmit, searchString, handleCountryChange, handleGenreChange}){
 
     return(
         <div>
@@ -16,7 +16,7 @@ export default function Home({setCurrentMedia, setCurrentStation, setCurrentCoun
           handleCountryChange={handleCountryChange}
           handleGenreChange={handleGenreChange}            
             />
-            <p className="disclaimer">DISCLAIMER: Pebl Radio is not responsible for broken links from station providers.</p>
+            {/* <p className="disclaimer">DISCLAIMER: Pebl Radio is not responsible for broken links from station providers.</p> */}
           <div className="station-gallery">
             <RadioList
           setCurrentMedia={setCurrentMedia}
@@ -27,7 +27,8 @@ export default function Home({setCurrentMedia, setCurrentStation, setCurrentCoun
           setCurrentFavicon={setCurrentFavicon}
           results={results}
           setPlayPause={setPlayPause}
-          setTrue={setTrue}        
+          setTrue={setTrue}
+          setFalse={setFalse}        
             />
             </div>
             </center>  

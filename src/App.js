@@ -23,8 +23,10 @@ export default function App () {
   const [currentGenre, setCurrentGenre] = useState('');
   const [currentFavicon, setCurrentFavicon] = useState('');
   const [playPause, setPlayPause] = useState(true);
+  const [initPause, setInitPause] = useState(false);
   const [currentId, setCurrentId] =  useState('');
   const audioElement = useRef(null);
+
 
 
 
@@ -206,7 +208,7 @@ export default function App () {
   // Create
   const [stationData, setStationData] = useState({});
 
-  const createFavorite = async (e) => {
+  const createFavorite = async () => {
   console.log("This link was successful!")
   const body = { ...stationData };
   try {
@@ -237,6 +239,31 @@ export default function App () {
   await getStationData();
   }
   };
+
+
+  //DELETE FAVORITE FROM USER
+  const [removeById, setRemoveById] = useState('')
+  const removeFavorite = async () => {
+    console.log("This link was successful!")
+    console.log(`The Data received on the App.js is: ${removeById}`)
+    try {
+      const res = await fetch(
+      `https://worldwide-radio-database.herokuapp.com/user/${window.localStorage.getItem("username")}/${removeById}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${window.localStorage.getItem("token")}`
+        }});
+    const data = await res.json();
+    console.log(res)
+    console.log(data)
+    } catch (err) {
+    console.error(err);
+    } finally {
+    await getProfileData();
+    }
+    };
   // const handleChange = (e) => {
   //   setFormData({ ...formData, [e.target.id]: e.target.value });
   //   if (e.target.id === "tags"){
@@ -248,8 +275,12 @@ export default function App () {
     setSearchString(event.target.value);
   }
 
-  function handleFavoriteAdd(event) {
+  function handleFavoriteAdd() {
     createFavorite()
+  }
+
+  function handleRemoveFavorite() {
+    removeFavorite();
   }
 
 // HANDLE SUBMIT FOR THIRD PARTY API
@@ -271,17 +302,29 @@ export default function App () {
     setPlayPause(true)
   }
 
+  function setFalse() {
+    setInitPause(false)
+  }
+
   function handlePlay(event){
     if (playPause === true){
     audioElement.current.audioEl.current.pause()
     setPlayPause(false);
+    setInitPause(true);
     console.log("This works!")
     } else if (playPause === false){
       audioElement.current.audioEl.current.play()
       console.log("This works!")
       setPlayPause(true);
+      setInitPause(false)
     }
   }
+
+  // function handlePause(){
+  //   if (initPause === false){
+
+  //   }
+  // }
 
 
   return (
@@ -300,6 +343,8 @@ export default function App () {
             currentFavicon={currentFavicon}
             currentId={currentId}
             handleFavoriteAdd={handleFavoriteAdd}
+            setInitPause={setInitPause}
+            initPause={initPause}
           />
           <ReactAudioPlayer className="media-player"
             src= {currentMedia}
@@ -326,6 +371,7 @@ export default function App () {
           results={results}
           setPlayPause={setPlayPause}
           setTrue={setTrue}
+          setFalse={setFalse}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           searchString={searchString}
@@ -343,6 +389,9 @@ export default function App () {
             loginForm={loginForm}
             setLoginForm={setLoginForm}
             handleLogout={handleLogout}
+            handleRemoveFavorite={handleRemoveFavorite}
+            setRemoveById={setRemoveById}
+            removeById={removeById}
             setCurrentMedia={setCurrentMedia} 
             setCurrentStation={setCurrentStation}
             setCurrentCountry={setCurrentCountry}

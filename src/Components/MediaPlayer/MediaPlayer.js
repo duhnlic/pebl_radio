@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
+import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import Typography from '@material-ui/core/Typography';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
@@ -39,13 +40,14 @@ const useStyles = makeStyles((theme) => ({
   },
   controls: {
     display: 'flex',
+    flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
+    paddingLeft: theme.spacing(2),
+    // paddingBottom: theme.spacing(1),
   },
   playIcon: {
     height: 52,
-    width: 150,
+    width: 52,
     color: '#a6bac9'
   },
   button: {
@@ -55,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 
 // add a handlePLayPause function to control icon button play vs pause 
 
-export default function MediaControlCard({handlePlay, currentStation, currentCountry, currentGenre, currentId, currentFavicon, handleFavoriteAdd}) {
+export default function MediaControlCard({handlePlay, currentStation, currentCountry, currentGenre, currentId, currentFavicon, handleFavoriteAdd, initPause, setInitPause}) {
   const classes = useStyles();
 
     return (
@@ -75,11 +77,14 @@ export default function MediaControlCard({handlePlay, currentStation, currentCou
                 </CardContent>
                 <div className={classes.controls}>
                 <IconButton onClick={handlePlay} aria-label="play/pause">
+                <>{!initPause ? 
                     <PlayCircleFilledIcon className={classes.playIcon}/>
-                    {/* <PauseCircleFilledIcon/> */}
+                : 
+                    <PauseCircleFilledIcon className={classes.playIcon}/>
+                }</>
                 </IconButton>
                 </div>
-                <div>
+                <div className={classes.controls}>
                 <IconButton>
                   <PlaylistAddIcon
                     className="add-favorite"
