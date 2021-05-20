@@ -5,10 +5,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
-import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import Typography from '@material-ui/core/Typography';
-import FavoriteButton from '../FavoriteButton/FavoriteButton' 
-import Button from '@material-ui/core/Button';
+import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
 
 
@@ -50,6 +48,9 @@ const useStyles = makeStyles((theme) => ({
     width: 150,
     color: '#a6bac9'
   },
+  button: {
+    color: '#a6bac9',
+  }
 }));
 
 // add a handlePLayPause function to control icon button play vs pause 
@@ -78,11 +79,17 @@ export default function MediaControlCard({handlePlay, currentStation, currentCou
                     {/* <PauseCircleFilledIcon/> */}
                 </IconButton>
                 </div>
-                
-                  <FavoriteButton
+                <div>
+                <IconButton>
+                  <PlaylistAddIcon
+                    className="add-favorite"
                     currentId={currentId}
-                    handleFavoriteAdd={handleFavoriteAdd}
-                  /> 
+                    onClick={()=>{
+                      handleFavoriteAdd()
+                    }}
+                  />
+                  </IconButton>
+                </div> 
             </div>
             <CardMedia
                 className={classes.cover}

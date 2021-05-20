@@ -1,19 +1,15 @@
 import './App.css';
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { useState, useRef, useEffect } from "react";
-import UserSearchBar from './Components/UserSearchBar/UserSearchBar';
 import logo from './shared/App_Icon.svg';
-import RadioList from './Components/RadioList/RadioList';
 import MediaControlCard from './Components/MediaPlayer/MediaPlayer';
 import ReactAudioPlayer from 'react-audio-player';
 import DonationLink from './Components/DonationLink/DonationLink';
-import { Canvas } from '@react-three/fiber';
 import World from './Components/3Dworld/3Dworld';
 import Profile from './Components/Profile/Profile';
 import Home from './Components/Home/Home';
 import CuratedStations from './Components/CuratedStations/CuratedStations'
 import Register from './Components/Registration/Registration'
-
 
 
 export default function App () {
@@ -79,15 +75,10 @@ export default function App () {
 
     //USER REGISTER
 
-
-    
-
-
     const [registerForm, setRegisterForm] = useState({
       username: "",
       password: ""
   })
-
 
   const handleRegister = async (e) => {
     const body = { ...registerForm };
@@ -257,7 +248,6 @@ export default function App () {
     setSearchString(event.target.value);
   }
 
-
   function handleFavoriteAdd(event) {
     createFavorite()
   }
@@ -320,19 +310,10 @@ export default function App () {
       </nav>
       <header>
         <div className="brand">
-            <img src={logo} width="200" height="200" className="App-logo" alt="Pebl Internet Radio App" />
+            {/* <img src={logo} width="400" height="400" className="App-logo" alt="Pebl Internet Radio App" /> */}
             <h1 className="logo-app-name">Pebl Radio</h1>
         </div>
-        {/* <UserSearchBar
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          searchString={searchString}
-          handleCountryChange={handleCountryChange}
-          handleGenreChange={handleGenreChange}
-        /> 
-        <p className="disclaimer">DISCLAIMER: Pebl Radio is not responsible for broken links from station providers.</p> */}
       </header>
-
       <Switch>
         <Route exact path={"/"}> 
           <Home
@@ -389,17 +370,6 @@ export default function App () {
           />
         </Route>  
       </Switch>
-      {/* <RadioList 
-      setCurrentMedia={setCurrentMedia}
-      setCurrentStation={setCurrentStation}
-      setCurrentCountry={setCurrentCountry}
-      setCurrentGenre={setCurrentGenre}
-      setCurrentId={setCurrentId}
-      results={results}
-      stations={stations}
-      setPlayPause={setPlayPause}
-      setTrue={setTrue}
-      /> */}
       <footer>
         <p className="credits">Created by Brian Stewart</p>
         <DonationLink/>

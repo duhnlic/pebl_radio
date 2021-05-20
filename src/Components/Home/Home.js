@@ -2,6 +2,7 @@ import UserSearchBar from '../UserSearchBar/UserSearchBar'
 import RadioList from '../RadioList/RadioList'
 import NavBar from '../NavBar/NavBar'
 
+
 export default function Home({setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setCurrentId, setCurrentFavicon, results, setPlayPause, setTrue, handleChange, handleSubmit, searchString, handleCountryChange, handleGenreChange}){
 
     return(
