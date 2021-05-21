@@ -243,6 +243,7 @@ export default function App () {
 
   //DELETE FAVORITE FROM USER
   const [removeById, setRemoveById] = useState('')
+  const [confirmation, setConfirmation] = useState(false)
   const removeFavorite = async () => {
     console.log("This link was successful!")
     console.log(`The Data received on the App.js is: ${removeById}`)
@@ -306,6 +307,14 @@ export default function App () {
     setInitPause(false)
   }
 
+  function setConfirmTrue() {
+    setConfirmation(true)
+  }
+
+  function setConfirmFalse() {
+    setConfirmation(false)
+  }
+
   function handlePlay(event){
     if (playPause === true){
     audioElement.current.audioEl.current.pause()
@@ -343,7 +352,6 @@ export default function App () {
             currentFavicon={currentFavicon}
             currentId={currentId}
             handleFavoriteAdd={handleFavoriteAdd}
-            setInitPause={setInitPause}
             initPause={initPause}
           />
           <ReactAudioPlayer className="media-player"
@@ -392,6 +400,9 @@ export default function App () {
             handleLogout={handleLogout}
             handleRemoveFavorite={handleRemoveFavorite}
             setRemoveById={setRemoveById}
+            confirmation={confirmation}
+            setConfirmTrue={setConfirmTrue}
+            setConfirmFalse={setConfirmFalse}
             removeById={removeById}
             setCurrentMedia={setCurrentMedia} 
             setCurrentStation={setCurrentStation}

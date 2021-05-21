@@ -11,7 +11,7 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
 
 
-const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, setLoginForm, handleLoginChange, handleLogout, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setTrue, getProfileData, handleRemoveFavorite, setRemoveById, removeById})=>{
+const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, setLoginForm, handleLoginChange, handleLogout, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setTrue, getProfileData, handleRemoveFavorite, setRemoveById, removeById, setConfirmTrue, confirmation, setConfirmFalse})=>{
 
     const addFavoriteIcon = <PlaylistAddIcon/>
     const appsIcon = <AppsIcon/>
@@ -22,7 +22,6 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, setLoginForm,
     }, [isLoggedIn]);
 
     useEffect(()=>{
-      handleRemoveFavorite()
       console.log(`The setRemoveById is set to: ${removeById} on Profiles`)
     },[removeById])
 
@@ -57,6 +56,7 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, setLoginForm,
                 <center>
                 <div key={stationObject.i} className="station">
                     <div className="remove-button">
+                <>{!confirmation ?
                     <button
                      className="remove-btn"
                      type="primary"
@@ -64,18 +64,30 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, setLoginForm,
                      onClick={()=>{
                       console.log(`The base assignment of station id is: ${stationObject._id} on Profiles`)
                         setRemoveById(stationObject._id)
-                      // setRemoveById(stationObject._id)
-
-                      
-
-                     }}
-
-                     >
+                        setConfirmTrue()
+                     }}>
                      <DeleteOutlined />
-
                     </button>
+                  :
+                     <div>
+                      <h4>Confirm Remove?</h4>
+                      <button
+                        onClick={() => {
+                          handleRemoveFavorite()
+                          setConfirmFalse()
+                        }}>
+                      Remove
+                      </button>
+                      <button
+                        onClick={() => {
+                          setConfirmFalse()
+                        }}>
+                      Exit
+                      </button>
                     </div>
-                     <h2>Favorites List</h2>
+                }</>
+                    </div>
+                     {/* <h2>Favorites List</h2> */}
                     <div className="radio-list">
                         <h3>{stationObject.name}</h3>
                         <p>{stationObject.genre}</p>
@@ -113,30 +125,35 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, setLoginForm,
               handleLogin()
                 }
             }>
+          <center>
             <label>
               {" "}
               Username:{" "}
               <input
+                className="login-field"
                 type="text"
                 id="username"
                 value={loginForm.username}
                 onChange={handleLoginChange}
               />
             </label>
+            </center>
             <br />
-            <br />
+            <center>
             <label>
               {" "}
               Password:{" "}
               <input
+                className="login-field"
                 type="password"
                 id="password"
                 value={loginForm.password}
                 onChange={handleLoginChange}
               />
             </label>
+          </center>
             <br />
-            <input type="submit" />
+            <input className="login-field" type="submit" />
           </form>
           <center>
           <h3>Don't have an account? Create one <NavLink to="/register" className="navlink">here!</NavLink></h3>

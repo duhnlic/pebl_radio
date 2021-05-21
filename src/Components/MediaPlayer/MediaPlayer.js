@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 
 // add a handlePLayPause function to control icon button play vs pause 
 
-export default function MediaControlCard({handlePlay, currentStation, currentCountry, currentGenre, currentId, currentFavicon, handleFavoriteAdd, initPause, setInitPause}) {
+export default function MediaControlCard({handlePlay, currentStation, currentCountry, currentGenre, currentId, currentFavicon, handleFavoriteAdd, initPause }) {
   const classes = useStyles();
 
     return (

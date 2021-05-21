@@ -70,9 +70,10 @@ const World =()=>{
         // create a light
         const color = 0xF3F3F3;
         const intensity = 4;
-        const ambiIntensity = 0.31;
+        const ambiColor = 0x00FF00;
+        const ambiIntensity = 0.216;
         const light = new THREE.DirectionalLight(color, intensity);
-        const ambientLight = new THREE.AmbientLight(color, ambiIntensity);
+        const ambientLight = new THREE.AmbientLight(ambiColor, ambiIntensity);
         light.position.set(-5, 5, 10);
         light.target.position.set(-5, 0, 0);
         scene.add(ambientLight)
@@ -82,10 +83,10 @@ const World =()=>{
         const helper = new THREE.DirectionalLightHelper(light);
         // scene.add(helper);
         
-        camera.position.z = 5;
+        camera.position.z = 8;
         const animate =()=> {
             requestAnimationFrame( animate );
-            planetRadio.rotation.y += 0.013;
+            planetRadio.rotation.y += 0.003;
             // planetProfile.rotation.y += 0.003;
             renderer.render( scene, camera );
         };
