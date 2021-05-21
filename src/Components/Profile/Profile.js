@@ -13,7 +13,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 
 
 
-const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, setLoginForm, handleLoginChange, handleLogout, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setTrue, getProfileData, handleRemoveFavorite, setRemoveById, removeById, setConfirmTrue, confirmation, setConfirmFalse})=>{
+const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, handleLoginChange, handleLogout, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setTrue, getProfileData, handleRemoveFavorite, setRemoveById, removeById, setConfirmTrue, confirmation, setConfirmFalse})=>{
 
     const addFavoriteIcon = <PlaylistAddIcon/>
     const appsIcon = <AppsIcon/>

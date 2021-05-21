@@ -2,9 +2,8 @@ import play from '../../shared/play_push_icon.svg'
 import radio from '../../shared/radio_icon2.svg'
 
 
-const RadioList = ({ results, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setCurrentId, setCurrentFavicon, setPlayPause, setTrue}) =>{
-    // console.log(JSON.stringify(results, null, 2));
-    // return early if there are no stations
+const RadioList = ({ results, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setCurrentId, setCurrentFavicon, setTrue }) =>{
+
     if (results === undefined || !results.length){
 
         return (

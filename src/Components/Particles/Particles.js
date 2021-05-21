@@ -55,7 +55,6 @@ export default function Particles(){
         config={config}
 
       />
-      {/* <ParticleField/> */}
     </div>
   );
 }

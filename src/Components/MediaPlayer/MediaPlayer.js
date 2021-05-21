@@ -15,7 +15,6 @@ import CancelIcon from '@material-ui/icons/Cancel';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    // justifyContent: 'center'
     backgroundColor: '#2f4858',
     color: '#a6bac9',
     boxShadow: '-8px 14px 4.1px 0 rgba(0, 0, 0, 0.225)',
@@ -44,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
     paddingLeft: theme.spacing(2),
-    // paddingBottom: theme.spacing(1),
   },
   playIcon: {
     height: 52,
@@ -56,7 +54,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-// add a handlePLayPause function to control icon button play vs pause 
 
 export default function MediaControlCard({handlePlay, currentStation, currentCountry, currentGenre, currentId, currentFavicon, handleFavoriteAdd, initPause }) {
   const classes = useStyles();
@@ -78,6 +75,7 @@ export default function MediaControlCard({handlePlay, currentStation, currentCou
                 </CardContent>
                 <div className={classes.controls}>
                 <IconButton onClick={handlePlay} aria-label="play/pause">
+                {/* allow for UI to update play state */}
                 <>{!initPause ? 
                     <PlayCircleFilledIcon className={classes.playIcon}/>
                 : 
@@ -102,9 +100,6 @@ export default function MediaControlCard({handlePlay, currentStation, currentCou
                 image={currentFavicon}
                 title="Radio_Icon"
             />
-            {/* <IconButton>
-                <CancelIcon/>
-            </IconButton> */}
             </Card>
         
     );
