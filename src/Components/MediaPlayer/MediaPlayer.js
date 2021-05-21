@@ -8,6 +8,7 @@ import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import Typography from '@material-ui/core/Typography';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 
 
@@ -101,6 +102,9 @@ export default function MediaControlCard({handlePlay, currentStation, currentCou
                 image={currentFavicon}
                 title="Radio_Icon"
             />
+            {/* <IconButton>
+                <CancelIcon/>
+            </IconButton> */}
             </Card>
         
     );

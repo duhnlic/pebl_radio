@@ -60,6 +60,7 @@ export default function App () {
     const handleLogout = () => {
       window.localStorage.clear();
       setLoggedIn(false);
+      window.location.reload();
     };
   
     const handleLoginChange = (e) => {

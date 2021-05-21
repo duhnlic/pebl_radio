@@ -8,6 +8,8 @@ import { DeleteOutlined } from "@ant-design/icons";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AppsIcon from '@material-ui/icons/Apps';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 
 
@@ -31,10 +33,11 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, setLoginForm,
         <div className="profile-page">
             <NavBar/>
             <center>
-            <h1>Profile Header Placeholder</h1>
+            <h1>Welcome to your Pebl Profile, {userProfile.username}!</h1> 
             <button onClick={handleLogout} className="logout-button">Log Out Here</button> 
             </center>
             <AccountCircleIcon/>
+            <h3>{userProfile.username}'s Favorite Stations</h3>
          <div className="badge">
             {/* chosen icon
             username */}
@@ -44,7 +47,6 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, setLoginForm,
         {!userProfile.stations.length ? 
         <>
         <center>
-          <h1>Welcome to your Pebl Profile, {userProfile.username}!</h1> 
           <p>Head on over to{appsIcon}<NavLink to="pebl-curated" className="navlink">Curated Stations</NavLink>Click on a station to {playArrow}play it and if you like it, click the {addFavoriteIcon} button in the player to add it to your Favorites List!</p>
           <h2>Favorites List:</h2>
         </center>
@@ -72,17 +74,19 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, setLoginForm,
                      <div>
                       <h4>Confirm Remove?</h4>
                       <button
+                        className="remove-btn"
                         onClick={() => {
                           handleRemoveFavorite()
                           setConfirmFalse()
                         }}>
-                      Remove
+                      <CheckCircleIcon/>
                       </button>
                       <button
+                        className="remove-btn"
                         onClick={() => {
                           setConfirmFalse()
                         }}>
-                      Exit
+                      <CancelIcon/>
                       </button>
                     </div>
                 }</>
@@ -118,6 +122,7 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, setLoginForm,
 
         return(
           <div>
+          <NavBar/>
           <center>
             <h1>Login to Profile</h1>
           </center>
