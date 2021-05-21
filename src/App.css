@@ -43,12 +43,12 @@
 }
 
 .logo-app-name{
-  font-size: 400%;
+  z-index: -1;
   /* transform: translateX(-5%); */
 }
 
 .slogan{
-  /* color: red; */
+  color: #a6bac9;
 }
 
 .media-player{

@@ -22,11 +22,11 @@ const World =()=>{
         // const texture = new THREE.TextureLoader().load('https://i.imgur.com/TTtGyo1.png')
         // textures
         const loader = new THREE.TextureLoader();
-        const map = loader.load( 'https://i.imgur.com/QGT8hDQ.jpg', render );
-        const normalMap = loader.load( 'https://i.imgur.com/aSTWIhM.jpg', render );
-        const displacementMap = loader.load('https://i.imgur.com/aWSDhXc.png', render);
-        const roughnessMap = loader.load('https://i.imgur.com/4RyhnQY.jpg', render);
-        const aoMap = loader.load('https://i.imgur.com/XzUCPv2.jpg', render);
+        const map = loader.load( 'https://i.imgur.com/Uj2VTad.jpg', render );
+        const displacementMap = loader.load('https://i.imgur.com/j3HIr0l.jpg', render);
+        const normalMap = loader.load( 'https://i.imgur.com/2M74L9A.jpg', render );
+        const aoMap = loader.load('https://i.imgur.com/Oqi8ZJT.jpg', render);
+        const roughnessMap = loader.load('https://i.imgur.com/ERoOa8m.jpg', render);
 
         const material = new THREE.MeshPhongMaterial({
             map: map,
