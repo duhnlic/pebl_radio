@@ -10,12 +10,16 @@
 
 .navbar{
   display: flex;
-  justify-content: center
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  background-color:#21333f;
 }
 
 .navlink {
-  margin: 20px;
+  margin: 20px 85px 20px 20px;
 }
+
 
 .App {
   position: relative;
@@ -94,6 +98,7 @@
 
 .login-field {
   width: 60%;
+  transform: translateX(10%);
 }
 
 .top-pick{

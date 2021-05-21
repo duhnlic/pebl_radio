@@ -6,13 +6,15 @@ import SearchIcon from '@material-ui/icons/Search';
 export default function NavBar(){
 
     return(
-        <div className="navbar">
+        <div className="navbar-main">
+            <div className="navbar">
             <SearchIcon/>
             <NavLink to="/" className="navlink">Search</NavLink>
             <PersonIcon/>
             <NavLink to="profile" className="navlink">Profile</NavLink>
             <AppsIcon/>
             <NavLink to="pebl-curated" className="navlink">Curated Stations</NavLink>
+            </div>
         </div>
     )
 }

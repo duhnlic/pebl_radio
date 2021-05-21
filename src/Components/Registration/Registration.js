@@ -14,6 +14,7 @@ export default function Register({handleRegister, handleRegisterChange, register
               {" "}
               Username:{" "}
               <input
+                className="login-field"
                 type="text"
                 id="username"
                 value={registerForm.username}
@@ -21,11 +22,11 @@ export default function Register({handleRegister, handleRegisterChange, register
               />
             </label>
             <br />
-            <br />
             <label>
               {" "}
               Password:{" "}
               <input
+                className="login-field"
                 type="password"
                 id="password"
                 value={registerForm.password}
@@ -33,7 +34,8 @@ export default function Register({handleRegister, handleRegisterChange, register
               />
             </label>
             <br />
-            <input type="submit" />
+            <br />
+            <input type="submit" className="login-field" />
           </form>
         </div>
     );
