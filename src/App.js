@@ -1,7 +1,7 @@
 import './App.css';
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { useState, useRef, useEffect } from "react";
-import logo from './pebl.svg';
+import logo from './peblradio.svg';
 import MediaControlCard from './Components/MediaPlayer/MediaPlayer';
 import ReactAudioPlayer from 'react-audio-player';
 import DonationLink from './Components/DonationLink/DonationLink';
@@ -364,7 +364,7 @@ export default function App () {
       </nav>
       <header>
         <div className="brand">
-            <img src={logo} width="1200" height="400" className="logo-app-name" alt="Pebl Internet Radio App" />
+            <img src={logo} className="logo-app-name" alt="Pebl Internet Radio App" />
             {/* <h1 className="logo-app-name">Pebl Radio</h1> */}
             <h4 className="slogan">The radio app as small as a pebble</h4>
         </div>
