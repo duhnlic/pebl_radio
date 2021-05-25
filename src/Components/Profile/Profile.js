@@ -123,6 +123,7 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, handleLoginCh
         return(
           <div>
           <NavBar/>
+          <div className="login-page">
           <center>
             <h1>Login to Profile</h1>
           </center>
@@ -161,8 +162,9 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, handleLoginCh
             <input className="login-field" type="submit" />
           </form>
           <center>
-          <h3>Don't have an account? Create one <NavLink to="/register" className="navlink">here!</NavLink></h3>
+          <h3>Don't have an account? Create one<NavLink to="/register" className="reg-navlink">here!</NavLink></h3>
           </center>
+        </div>
         </div>
         );
 }

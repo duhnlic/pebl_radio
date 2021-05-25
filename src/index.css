@@ -92,46 +92,6 @@ a:active {
    text-decoration: none; color:rgb(53, 37, 82); 
 }
 
-@media screen and (max-width: 360px) {
-
-  header{
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  
-  input {
-    width:22%;
-    margin: 2px 0;
-  }
-  
-  button {
-    border: 0;
-  }
-  
-}
-
-@media screen and (max-width: 419px) {
-
-  header{
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  
-  input {
-    width:61.5%;
-    margin: 2px 0;
-  }
-  
-  button {
-    border: 0;
-  }
-  
-}
-
 @media screen and (min-width: 601px){
    
   nav {
@@ -155,4 +115,93 @@ a:active {
     border: 0;
   }
 
+}
+
+
+@media screen and (max-width: 419px) {
+
+  body {
+    background: rgb(0,13,36);
+    background: -moz-linear-gradient(0deg, rgba(0,13,36,1) 0%, rgba(46,98,106,1) 55%, rgba(69,120,140,1) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(0,13,36,1) 0%, rgba(46,98,106,1) 55%, rgba(69,120,140,1) 100%);
+    background: linear-gradient(0deg, rgba(0,13,36,1) 0%, rgba(46,98,106,1) 55%, rgba(69,120,140,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000d24",endColorstr="#45788c",GradientType=1);
+  }
+
+  
+  canvas {
+    display: none;
+    visibility: hidden;
+  }
+
+  header{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  input {
+    width:61.5%;
+    margin: 2px 0;
+  }
+  
+  button {
+    border: 0;
+  }
+  
+}
+
+
+@media screen and (max-width: 360px) {
+
+  header{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  input {
+    width:22%;
+    margin: 2px 0;
+  }
+  
+  button {
+    border: 0;
+  }
+
+  
+}
+
+@media screen and (max-width: 321px) {
+
+
+  header{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  input {
+    width:22%;
+    margin: 2px 0;
+  }
+  
+  button {
+    border: 0;
+  }
+
+  nav {
+    position: fixed;
+    width: 63%;
+    transform: translateX(3.2%);
+    z-index: 1000;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+  }
+  
 }

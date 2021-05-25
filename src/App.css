@@ -8,7 +8,7 @@
   z-index: -3000;
 }
 
-.navbar{
+.navbar {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -20,6 +20,9 @@
   margin: 20px 85px 20px 20px;
 }
 
+.reg-navlink {
+  margin-left: 5px;
+}
 
 .App {
   position: relative;
@@ -93,7 +96,7 @@
 }
 
 .user-search{
-  width: 60%;
+  width: 30%;
 }
 
 .login-field {
@@ -310,6 +313,17 @@
     margin: 0;
     font-size: 150px;
   }
+
+  .login-page {
+    background-color:rgba(33, 52, 65, 0.64);
+    margin: 30px 90px 30px 90px;
+    padding: 30px 0px 30px 0px;
+    border-radius: 8px;
+  }
+
+  .login-field {
+    width: 15%;
+  }
   
   .user-search{
     padding: 0 8px 0 8px;
@@ -326,7 +340,7 @@
   }
   
   .search-button{
-    transform: translate(360%, -130.5%);
+    transform: translate(225%, -130.5%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -352,4 +366,91 @@
     width: 390px;
   }
 
+}
+
+
+@media screen and (max-width: 360px){  
+
+  .logo-app-name{
+    font-size: 22px;
+    transform: translateX(-25%)
+
+  }
+  
+  .user-search{
+    transform: translate(-3%, 4%);
+  }
+  
+  .ResultCountry{
+    transform: translate(3%, -205%);
+  }
+  
+  .ResultGenre{
+    transform: translate(6.3%, -185%);
+  }
+  
+  .search-button{
+    transform: translate(320%, 80%);
+    padding: 10px;
+  }
+
+  .welcome-message{
+    transform:translateX(19%)
+  }
+
+  .top-pick-gallery{
+    display: inline-block;
+    transform: translate(-14%, -7%)
+
+  }
+
+  .disclaimer{
+    transform: translateY(-250%);
+    font-size: 8px;
+  }
+
+  
+}
+
+@media screen and (max-width: 320px){  
+
+  .logo-app-name{
+    font-size: 22px;
+    transform: translateX(-25%)
+
+  }
+  
+  .user-search{
+    transform: translate(-3%, 4%);
+  }
+  
+  .ResultCountry{
+    transform: translate(3%, -205%);
+  }
+  
+  .ResultGenre{
+    transform: translate(6.3%, -185%);
+  }
+  
+  .search-button{
+    transform: translate(320%, 80%);
+    padding: 10px;
+  }
+
+  .welcome-message{
+    transform:translateX(19%)
+  }
+
+  .top-pick-gallery{
+    display: inline-block;
+    transform: translate(-14%, -7%)
+
+  }
+
+  .disclaimer{
+    transform: translateY(-250%);
+    font-size: 8px;
+  }
+
+  
 }

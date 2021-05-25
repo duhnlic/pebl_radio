@@ -3,7 +3,8 @@ export default function Register({handleRegister, handleRegisterChange, register
     const history = useHistory()
 
     return(
-        <div>
+      <div>
+        <div className="login-page">
             <h2>Create an Account:</h2>
             <form onSubmit={ async ()=>{
               await handleRegister()
@@ -38,5 +39,6 @@ export default function Register({handleRegister, handleRegisterChange, register
             <input type="submit" className="login-field" />
           </form>
         </div>
+      </div>
     );
 }
