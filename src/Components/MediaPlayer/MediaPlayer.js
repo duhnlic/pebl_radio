@@ -9,45 +9,68 @@ import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import Typography from '@material-ui/core/Typography';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import CancelIcon from '@material-ui/icons/Cancel';
+import AppBar from '@material-ui/core/AppBar';
 
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    alignItems: 'flex-start',
     backgroundColor: '#2f4858',
     color: '#a6bac9',
     boxShadow: '-8px 14px 4.1px 0 rgba(0, 0, 0, 0.225)',
     position: 'fixed',
     zIndex: '3000',
-    width: '94%',
-    height: 'auto',
-    
+    width: '100%',
+    height: '15%',
   },
   details: {
     display: 'flex',
-    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    marginTop: theme.spacing(6),
   },
   content: {
-    flex: '1 0 auto',
-    color: '#a6bac9'
+    // transform: 'translateY(-30%)',
+    color: '#a6bac9',
+  },
+  info: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   cover: {
-    width: 120,
-    height: 80,
-    marginTop: theme.spacing(6),
-    marginRight: theme.spacing(3),
+    width: 50,
+    height: 50,
+    marginRight: theme.spacing(1),
   },
-  controls: {
+  presses: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
+  },
+  playControls: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
     alignItems: 'center',
     paddingLeft: theme.spacing(2),
+    transform: 'translateY(10%)',
   },
   playIcon: {
     height: 52,
     width: 52,
-    color: '#a6bac9'
+    color: '#a6bac9',
+  },
+  favControls: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingLeft: theme.spacing(2),
+    transform: 'translate(2.5%, -15%)',
+  },
+  addFavorite: {
+    color: '#a6bac9',
   },
   button: {
     color: '#a6bac9',
@@ -60,47 +83,49 @@ export default function MediaControlCard({handlePlay, currentStation, currentCou
 
     return (
     
-            <Card className={classes.root}>
+            <AppBar className={classes.root}>
             <div className={classes.details}>
-                <CardContent className={classes.content}>
-                <Typography component="h5" variant="h5" className={classes.content}>
-                    Station: {currentStation}
-                </Typography>
-                <Typography variant="subtitle1" className={classes.content}>
-                    Country: {currentCountry}
-                </Typography>
-                <Typography variant="subtitle2" className={classes.content}>
-                    Genre: {currentGenre}
-                </Typography>
-                </CardContent>
-                <div className={classes.controls}>
-                <IconButton onClick={handlePlay} aria-label="play/pause">
-                {/* allow for UI to update play state */}
-                <>{!initPause ? 
-                    <PlayCircleFilledIcon className={classes.playIcon}/>
-                : 
-                    <PauseCircleFilledIcon className={classes.playIcon}/>
-                }</>
-                </IconButton>
-                </div>
-                <div className={classes.controls}>
-                <IconButton>
-                  <PlaylistAddIcon
-                    className="add-favorite"
-                    currentId={currentId}
-                    onClick={()=>{
-                      handleFavoriteAdd()
-                    }}
-                  />
+                <div className={classes.presses}>
+                  <div className={classes.playControls}>
+                  <IconButton onClick={handlePlay} aria-label="play/pause">
+                  {/* allow for UI to update play state */}
+                  <>{!initPause ? 
+                      <PauseCircleFilledIcon className={classes.playIcon}/>
+                  : 
+                      <PlayCircleFilledIcon className={classes.playIcon}/>
+                  }</>
                   </IconButton>
-                </div> 
+                  </div>
+                  <div className={classes.favControls}>
+                  <IconButton>
+                    <PlaylistAddIcon
+                      className={classes.addFavorite}
+                      currentId={currentId}
+                      onClick={()=>{
+                        handleFavoriteAdd()
+                      }}
+                    />
+                    </IconButton>
+                  </div> 
+                </div>
+                <CardContent className={classes.info}>
+                  <Typography component="h5" variant="h6" className={classes.content}>
+                      Station: {currentStation}
+                  </Typography>
+                  <Typography variant="subtitle2" className={classes.content}>
+                      Country: {currentCountry}
+                  </Typography>
+                  <Typography variant="subtitle2" className={classes.content}>
+                      Genre: {currentGenre}
+                  </Typography>
+                  <CardMedia
+                      className={classes.cover}
+                      image={currentFavicon}
+                      title="Radio_Icon"
+                  />
+                </CardContent>
             </div>
-            <CardMedia
-                className={classes.cover}
-                image={currentFavicon}
-                title="Radio_Icon"
-            />
-            </Card>
+            </AppBar>
         
     );
 

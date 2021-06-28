@@ -5,7 +5,7 @@ export default function CuratedStations({stations, setCurrentMedia, setCurrentSt
 
     //account for the possibility of the API not loading
     if (stations === undefined || !stations.length){
-        return <h2>ERROR ERROR ERROR</h2> 
+        return <h2>Loading...</h2> 
     }
     return(
         <div>

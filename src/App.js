@@ -370,7 +370,7 @@ export default function App () {
         </div>
       </header>
       <Switch>
-        <Route exact path={"/"}> 
+        {/* <Route exact path={"/"}> 
           <Home
           setCurrentMedia={setCurrentMedia} 
           setCurrentStation={setCurrentStation}
@@ -388,7 +388,7 @@ export default function App () {
           handleCountryChange={handleCountryChange}
           handleGenreChange={handleGenreChange}        
           />
-        </Route>
+        </Route> */}
         <Route exact path={"/profile"}>
           <Profile
             getProfileData={getProfileData}
@@ -412,7 +412,7 @@ export default function App () {
             setTrue={setTrue}
           />
         </Route>
-        <Route exact path={"/pebl-curated"}>
+        <Route exact path={"/"}>
           <CuratedStations
             stations={stations}
             setCurrentMedia={setCurrentMedia} 

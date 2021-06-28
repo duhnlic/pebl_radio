@@ -46,7 +46,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 450px;
+  margin-top: 225px;
 }
 
 .logo-app-name{
@@ -140,10 +140,6 @@
   color: #a6bac9;
 }
 
-.add-favorite {
-  color: #a6bac9;
-}
-
 
 .ResultCountry{
   margin: 12px 12px;
@@ -195,23 +191,36 @@
     height: 40vmin;
   }
 
-  .brand{
+  .navicon{
+    transform: translateX(85%);
+  }
 
-    transform: translateX(-3.5%);
+  .navlink {
+    margin: 30px 40px 30px 20px;
+    transform: translateX(15%);
+  }
+
+  .brand{
+    margin-top: 160px;
+  }
+
+  .media-player{
+    width: 100%;
   }
    
   .logo-app-name{
-    font-size: 30px;
-    width: 100; 
-    height: 10;
-    transform: translateX(1%);
+    /* font-size: 30px; */
+    width: 99%; 
+    height: auto;
+    /* transform: translateX(2%); */
   }
   
   .user-search{
-    padding: 0 8px 0 8px;
+    padding: 0 22px 0 22px;
+    width: 95%;
     margin: 0;
     position: relative;
-    transform: translate(-9%, 4%);
+    transform: translate(-19.5%, 8%);
   }
   
   .ResultCountry{
@@ -228,7 +237,7 @@
   }
   
   .search-button{
-    transform: translate(227%, -135%);
+    transform: translate(212.5%, -135%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -241,13 +250,11 @@
   .top-pick{
     transform: translateY(-10%);
     width: 100%;
-    
   }
 
   .top-pick-gallery{
     display: inline-block;
-    transform: translate(-3%, -7%)
-
+    transform: translate(-16.5%, -7%)
   }
 
   .disclaimer{
@@ -255,7 +262,11 @@
     font-size: 9px;
   }
 
-  
+  .login-field {
+    width: 60%;
+    transform: translateX(2%);
+    margin-bottom: 12px;
+  }
 }
 
 @media screen and (max-width: 360px){  

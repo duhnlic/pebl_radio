@@ -27,14 +27,14 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 0;
+  /* padding: 1rem 0; */
 }
 
 header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 0;
+  /* padding: 1rem 0; */
 }
 
 footer{
@@ -95,12 +95,13 @@ a:active {
 @media screen and (min-width: 601px){
    
   nav {
-    width:50%;
-    transform: translateX(50%);
+    width: 100%;
+    /* transform: translateX(50%); */
     position: fixed;
     z-index: 3000;
   }
   
+
   header {
     padding: 1rem 0 0 0;
   }
@@ -128,6 +129,13 @@ a:active {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000d24",endColorstr="#45788c",GradientType=1);
   }
 
+  nav {
+    width: 10%;
+    /* transform: translateX(50%); */
+    position: fixed;
+    z-index: 3000;
+  }
+
   
   canvas {
     display: none;
@@ -135,7 +143,6 @@ a:active {
   }
 
   header{
-    margin-top: 20px;
     display: flex;
     justify-content: center;
   }
@@ -156,7 +163,6 @@ a:active {
 @media screen and (max-width: 360px) {
 
   header{
-    margin-top: 20px;
     display: flex;
     justify-content: center;
   }
@@ -178,7 +184,6 @@ a:active {
 
 
   header{
-    margin-top: 20px;
     display: flex;
     justify-content: center;
   }

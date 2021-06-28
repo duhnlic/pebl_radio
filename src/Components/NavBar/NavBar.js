@@ -8,12 +8,12 @@ export default function NavBar(){
     return(
         <div className="navbar-main">
             <div className="navbar">
-            <SearchIcon/>
-            <NavLink to="/" className="navlink">Search</NavLink>
-            <PersonIcon/>
+            {/* <SearchIcon className="navicon"/>
+            <NavLink to="/" className="navlink">Search</NavLink> */}
+            <PersonIcon className="navicon"/>
             <NavLink to="profile" className="navlink">Profile</NavLink>
-            <AppsIcon/>
-            <NavLink to="pebl-curated" className="navlink">Curated Stations</NavLink>
+            <AppsIcon className="navicon"/>
+            <NavLink to="/" className="navlink">Curated Stations</NavLink>
             </div>
         </div>
     )

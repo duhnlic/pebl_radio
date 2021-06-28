@@ -1,9 +1,11 @@
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
+import NavBar from '../NavBar/NavBar';
 export default function Register({handleRegister, handleRegisterChange, registerForm}){
     const history = useHistory()
 
     return(
       <div>
+        <NavBar />
         <div className="login-page">
             <h2>Create an Account:</h2>
             <form onSubmit={ async ()=>{

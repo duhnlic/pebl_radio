@@ -144,7 +144,6 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, handleLoginCh
               />
             </label>
             </center>
-            <br />
             <center>
             <label>
               {" "}
