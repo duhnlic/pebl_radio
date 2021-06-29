@@ -1,6 +1,7 @@
 import play from '../../shared/play_push_icon.svg'
 import radio from '../../shared/radio_icon2.svg'
 import NavBar from '../NavBar/NavBar'
+
 export default function CuratedStations({stations, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setCurrentId, setTrue}){
 
     //account for the possibility of the API not loading
