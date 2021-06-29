@@ -47,7 +47,7 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, handleLoginCh
         {!userProfile.stations.length ? 
         <>
         <center>
-          <p>Head on over to{appsIcon}<NavLink to="pebl-curated" className="navlink">Curated Stations</NavLink>Click on a station to {playArrow}play it and if you like it, click the {addFavoriteIcon} button in the player to add it to your Favorites List!</p>
+          <p>Head on over to{appsIcon}<NavLink to="/" className="navlink">Curated Stations</NavLink>Click on a station to {playArrow}play it and if you like it, click the {addFavoriteIcon} button in the player to add it to your Favorites List!</p>
           <h2>Favorites List:</h2>
         </center>
         </>:
@@ -100,6 +100,7 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, handleLoginCh
                     </div>
                     <div  className="radio-button">
                         <button 
+                        className="station-button"
                         onClick={() => { 
                                 setCurrentMedia(stationObject.url)
                                 setCurrentStation(stationObject.name)
