@@ -13,15 +13,22 @@
   justify-content: center;
   align-content: center;
   align-items: center;
-  background-color:#21333f;
+  background-color:#72799b;
+  box-shadow: 0px 12px 5.1px 0 rgba(0, 0, 0, 0.255);
 }
 
 .navlink {
   margin: 20px 85px 20px 20px;
+  color: #121629;
+}
+
+.navicon {
+  color: #121629;
 }
 
 .reg-navlink {
   margin-left: 5px;
+  color: #eebbc3;
 }
 
 .App {
@@ -46,7 +53,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 225px;
+  margin-top: 25px;
 }
 
 .logo-app-name{
@@ -57,7 +64,7 @@
 }
 
 .slogan{
-  color: #a6bac9;
+  color: #eebbc3;
 }
 
 .media-player{
@@ -65,7 +72,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #eebbc3;
 }
 
 .stations-gallery{
@@ -79,7 +86,7 @@
 
 .station{
   border-radius: 8px;
-  background-color: #21333f;
+  background-color: #b8c1ec;
   box-shadow: -8px 10px 4.1px 0 rgba(0, 0, 0, 0.355);
   width: 88%;
   margin: 50px 50px;
@@ -124,12 +131,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #121629;
 }
 
 .radio-button{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.station-button{
+  background-color: #ddabb2;
+  border: 1px solid #8a92b9;
+  box-shadow: -2px 2px 2.1px 0 rgba(0, 0, 0, 0.355);
+}
+
+.btn {
+  color: #232946;
+  background-color: #a73e4e;
 }
 
 .remove-btn {
@@ -173,7 +192,32 @@
 }
 
 .donate-button{
-  color: #a6bac9;
+  color: #121629;
+}
+
+.favControls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20%;
+  transform: translate(4%, -30%);
+}
+
+.playControls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20%;
+  transform: translateY(5%);
+}
+
+.details {
+  display: flex;
+  justify-content: flex-start;
+  transform: translateY(-8%);
+  /* margin-top: ; */
 }
 
 
@@ -201,7 +245,7 @@
   }
 
   .brand{
-    margin-top: 160px;
+    margin-top: 110px;
   }
 
   .media-player{
@@ -267,7 +311,35 @@
     transform: translateX(2%);
     margin-bottom: 12px;
   }
+
+  .favControls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20%;
+    transform: translate(2.5%, -35%);
+  }
+  
+  .playControls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20%;
+    transform: translateY(5%);
+  }
+  
+  .details {
+    display: flex;
+    justify-content: flex-start;
+    transform: translateY(15%);
+    /* margin-top: ; */
+  }
+
+
 }
+
 
 @media screen and (max-width: 360px){  
 

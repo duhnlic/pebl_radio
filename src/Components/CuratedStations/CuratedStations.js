@@ -24,6 +24,7 @@ export default function CuratedStations({stations, setCurrentMedia, setCurrentSt
                     </div>
                     <div  className="radio-button">
                         <button
+                        className="station-button"
                         onClick={() => { 
                                 setCurrentMedia(stationObject.url)
                                 setCurrentStation(stationObject.name)
@@ -31,6 +32,7 @@ export default function CuratedStations({stations, setCurrentMedia, setCurrentSt
                                 setCurrentGenre(stationObject.genre)
                                 setCurrentId(stationObject._id)
                                 setTrue()
+                                
                             }
                         }>
                             <img src={play} height="30px" width="30px" className="play-pause" alt="Play/Pause" />

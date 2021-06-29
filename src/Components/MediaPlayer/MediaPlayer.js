@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     alignItems: 'flex-start',
-    backgroundColor: '#2f4858',
+    backgroundColor: '#b8c1ec',
     color: '#a6bac9',
     boxShadow: '-8px 14px 4.1px 0 rgba(0, 0, 0, 0.225)',
     position: 'fixed',
@@ -25,14 +25,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '15%',
   },
-  details: {
-    display: 'flex',
-    justifyContent: 'flex-start',
-    marginTop: theme.spacing(6),
-  },
   content: {
     // transform: 'translateY(-30%)',
-    color: '#a6bac9',
+    color: '#121629',
   },
   info: {
     display: 'flex',
@@ -48,29 +43,13 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
   },
-  playControls: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingLeft: theme.spacing(2),
-    transform: 'translateY(10%)',
-  },
   playIcon: {
     height: 52,
     width: 52,
-    color: '#a6bac9',
-  },
-  favControls: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingLeft: theme.spacing(2),
-    transform: 'translate(2.5%, -15%)',
+    color: '#121629',
   },
   addFavorite: {
-    color: '#a6bac9',
+    color: '#121629',
   },
   button: {
     color: '#a6bac9',
@@ -84,9 +63,9 @@ export default function MediaControlCard({handlePlay, currentStation, currentCou
     return (
     
             <AppBar className={classes.root}>
-            <div className={classes.details}>
+            <div className="details">
                 <div className={classes.presses}>
-                  <div className={classes.playControls}>
+                  <div className="playControls">
                   <IconButton onClick={handlePlay} aria-label="play/pause">
                   {/* allow for UI to update play state */}
                   <>{!initPause ? 
@@ -96,7 +75,7 @@ export default function MediaControlCard({handlePlay, currentStation, currentCou
                   }</>
                   </IconButton>
                   </div>
-                  <div className={classes.favControls}>
+                  <div className="favControls">
                   <IconButton>
                     <PlaylistAddIcon
                       className={classes.addFavorite}

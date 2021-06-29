@@ -30,7 +30,7 @@ const World =()=>{
             map: map,
             normalMap: normalMap,
             metalness: 1,
-            color: 0xB1DDFB,
+            color: 0x6977be,
             displacementMap: displacementMap,
             displacementScale: 0.2,
             aoMap: aoMap,

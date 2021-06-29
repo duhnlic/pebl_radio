@@ -158,7 +158,7 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, handleLoginCh
             </label>
           </center>
             <br />
-            <input className="login-field" type="submit" />
+            <input className="btn login-field" type="submit" />
           </form>
           <center>
           <h3>Don't have an account? Create one<NavLink to="/register" className="reg-navlink">here!</NavLink></h3>

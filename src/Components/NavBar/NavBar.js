@@ -3,6 +3,7 @@ import AppsIcon from '@material-ui/icons/Apps';
 import PersonIcon from '@material-ui/icons/Person';
 import SearchIcon from '@material-ui/icons/Search';
 
+
 export default function NavBar(){
 
     return(

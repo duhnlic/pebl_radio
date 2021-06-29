@@ -1,5 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
+import Button from '@material-ui/core/Button';
 export default function Register({handleRegister, handleRegisterChange, registerForm}){
     const history = useHistory()
 
@@ -37,8 +38,8 @@ export default function Register({handleRegister, handleRegisterChange, register
               />
             </label>
             <br />
-            <br />
-            <input type="submit" className="login-field" />
+            <br />            
+            <input type="submit" className="btn login-field" />
           </form>
         </div>
       </div>
