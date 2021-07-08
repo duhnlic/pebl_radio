@@ -55,7 +55,7 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, handleLoginCh
         {userProfile.stations.map((stationObject, x) =>{
                 if (x < 2000){
                 return(
-                <center>
+                
                 <div key={stationObject.i} className="station">
                     <div className="remove-button">
                 <>{!confirmation ?
@@ -113,7 +113,7 @@ const Profile  =({userProfile, isLoggedIn, handleLogin, loginForm, handleLoginCh
                         </button>
                     </div>
                 </div>
-                </center>
+                
             )}})}
         </div>
   }

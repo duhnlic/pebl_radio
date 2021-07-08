@@ -222,14 +222,11 @@
   /* margin-top: ; */
 }
 
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.favorites {
+  display: flex;
+  flex-wrap: wrap; 
+  align-items: center;
+  justify-content: center;  
 }
 
 @media screen and (max-width: 419px){  
@@ -278,6 +275,11 @@
     flex-direction: column;
     transform: translate(0%, -185%);
     margin-right: 160px;
+  }
+
+  .station {
+    width: 88%;
+    margin: 30px 50px
   }
 
   .stations-gallery {
@@ -342,7 +344,11 @@
   }
 
   .favorites {
-    transform: translateX(-5.5%)
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap; 
+    align-items: center;
+    justify-content: center;  
   }
 
 
