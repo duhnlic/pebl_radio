@@ -84,7 +84,14 @@
   box-shadow: -8px 10px 4.1px 0 rgba(0, 0, 0, 0.355);
   width: 88%;
   margin: 50px 50px;
-  
+}
+
+.stations{
+  border-radius: 8px;
+  background-color: #b8c1ec;
+  box-shadow: -8px 10px 4.1px 0 rgba(0, 0, 0, 0.355);
+  width: 88%;
+  margin: 50px 50px;
 }
 
 .welcome{
@@ -280,6 +287,11 @@
   .station {
     width: 88%;
     margin: 30px 50px
+  }
+
+  .stations{
+    width: 96.8%;
+    margin: 30px 0px;
   }
 
   .stations-gallery {

@@ -16,7 +16,7 @@ export default function CuratedStations({stations, setCurrentMedia, setCurrentSt
             {stations.map((stationObject, x) =>{
                 if (x < 2000){
                 return(
-                <div key={stationObject.i} className="station">
+                <div key={stationObject.i} className="stations">
                     <div className="radio-list">
                         <h3>{stationObject.name}</h3>
                         <p>{stationObject.genre}</p>
