@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -25,14 +25,43 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '15%',
   },
-  content: {
-    // transform: 'translateY(-30%)',
-    color: '#121629',
-  },
   info: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    flexWrap: 'nowrap',
+    alignItems: 'flex-start',
+    width: '80vw',
+    overflow: 'hidden',
+    padding: '0',
+    margin: '16px',
+  },
+  contentTitle: {
+    overflow: 'hidden',
+    transform: 'translateY(12%)',
+    transform: 'translateX(-0.23%)',
+    display: 'flex',
+    color: '#121629',
+    whiteSpace: 'nowrap',
+  },
+  contentTitleActive: {
+    overflow: 'hidden',
+    transform: 'translateY(12%)',
+    display: 'flex',
+    color: '#121629',
+    whiteSpace: 'nowrap',
+    animation: 'scrolling 25s linear infinite',
+  },
+  contentCode: {
+    transform: 'translateY(5%)',
+    display: 'inline-block',
+    color: '#121629',
+    whiteSpace: 'nowrap',
+  },
+  contentGenre: {
+    transform: 'translateY(5%)',
+    display: 'inline-block',
+    color: '#121629',
+    whiteSpace: 'nowrap',
   },
   cover: {
     width: 50,
@@ -53,15 +82,12 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     color: '#a6bac9',
-  }
+  },
 }));
 
-
-export default function MediaControlCard({handlePlay, currentStation, currentCountry, currentGenre, currentId, currentFavicon, handleFavoriteAdd, initPause }) {
+export default function MediaControlCard({ handlePlay, currentStation, currentCountry, currentGenre, currentId, currentFavicon, handleFavoriteAdd, initPause, playPause }) {
   const classes = useStyles();
-
     return (
-    
             <AppBar className={classes.root}>
             <div className="details">
                 <div className={classes.presses}>
@@ -88,13 +114,20 @@ export default function MediaControlCard({handlePlay, currentStation, currentCou
                   </div> 
                 </div>
                 <CardContent className={classes.info}>
-                  <Typography component="h5" variant="h6" className={classes.content}>
-                      Station: {currentStation}
-                  </Typography>
-                  <Typography variant="subtitle2" className={classes.content}>
+                <>{!playPause ?
+                      <Typography component="h5" variant="h6" className={classes.contentTitle} refresh="true">
+                          Station: {currentStation}
+                      </Typography>
+                  :
+                      <Typography component="h5" variant="h6" className={classes.contentTitleActive} refresh="true">
+                          Station: {currentStation}
+                      </Typography>
+
+                }</>
+                  <Typography variant="subtitle2" className={classes.contentCode}>
                       Country: {currentCountry}
                   </Typography>
-                  <Typography variant="subtitle2" className={classes.content}>
+                  <Typography variant="subtitle2" className={classes.contentGenre}>
                       Genre: {currentGenre}
                   </Typography>
                   <CardMedia
@@ -107,5 +140,4 @@ export default function MediaControlCard({handlePlay, currentStation, currentCou
             </AppBar>
         
     );
-
 }

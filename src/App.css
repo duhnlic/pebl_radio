@@ -65,12 +65,19 @@
   color: #eebbc3;
 }
 
-.stations-gallery{
+.favorites {
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap; 
   align-items: center;
-  flex-direction: row;
+  justify-content: center;  
+}
+
+.stations-gallery{
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap; 
+  align-items: center;
+  /* flex-direction: row; */
   justify-content: center;  
   width: 90%;
   margin: 0 20px 0 20px;
@@ -90,7 +97,7 @@
   border-radius: 8px;
   background-color: #b8c1ec;
   box-shadow: -8px 10px 4.1px 0 rgba(0, 0, 0, 0.355);
-  width: 88%;
+  width: 363.2px;
   margin: 50px 50px;
 }
 
@@ -225,21 +232,27 @@
 .details {
   display: flex;
   justify-content: flex-start;
-  transform: translateY(-8%);
-  /* margin-top: ; */
+  transform: translateY(-5%);
 }
 
-.favorites {
-  display: flex;
-  flex-wrap: wrap; 
-  align-items: center;
-  justify-content: center;  
+
+@keyframes scrolling {
+  0% { transform: translateX(0vw); }
+  50% { transform: translateX(0vw); }
+  100% { transform: translateX(-54vw); }
 }
+
 
 @media screen and (max-width: 419px){  
-  .App-logo {
-    height: 40vmin;
-  }
+ .content-title {
+  animation: scrolling 15s linear infinite;
+ }
+
+ @keyframes scrolling {
+  0% { transform: translateX(0vw); }
+  50% { transform: translateX(0vw); }
+  100% { transform: translateX(-100%); }
+}
 
   .navicon{
     transform: translateX(85%);
@@ -351,7 +364,7 @@
   .details {
     display: flex;
     justify-content: flex-start;
-    transform: translateY(15%);
+    transform: translateY(32.5px);
     /* margin-top: ; */
   }
 

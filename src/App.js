@@ -22,7 +22,7 @@ export default function App () {
   const [currentCountry, setCurrentCountry] = useState('');
   const [currentGenre, setCurrentGenre] = useState('');
   const [currentFavicon, setCurrentFavicon] = useState('');
-  const [playPause, setPlayPause] = useState(true);
+  const [playPause, setPlayPause] = useState(false);
   const [initPause, setInitPause] = useState(false);
   const [currentId, setCurrentId] =  useState('');
   const audioElement = useRef(null);
@@ -316,6 +316,7 @@ export default function App () {
     setConfirmation(false)
   }
 
+
   function handlePlay(event){
     if (playPause === true){
     audioElement.current.audioEl.current.pause()
@@ -354,6 +355,7 @@ export default function App () {
             currentId={currentId}
             handleFavoriteAdd={handleFavoriteAdd}
             initPause={initPause}
+            playPause={playPause}
           />
           <ReactAudioPlayer className="media-player"
             src= {currentMedia}
