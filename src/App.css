@@ -570,3 +570,13 @@
 
   
 }
+/* disable media player info scroll on desktop */
+@media screen and (min-width: 650px){
+  * {
+    -webkit-animation: none !important;
+    -moz-animation: none !important;
+    -o-animation: none !important;
+    -ms-animation: none !important;
+    animation: none !important;
+}
+}

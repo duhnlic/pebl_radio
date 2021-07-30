@@ -10,7 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import CancelIcon from '@material-ui/icons/Cancel';
 import AppBar from '@material-ui/core/AppBar';
-
+import { render } from '@testing-library/react';
+import CuratedStations from '../CuratedStations/CuratedStations';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -86,6 +87,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MediaControlCard({ handlePlay, currentStation, currentCountry, currentGenre, currentId, currentFavicon, handleFavoriteAdd, initPause, playPause }) {
+const [value, setValue] = useState();
+
+const refresh = () =>{
+    // re-renders the component
+    setValue({});
+}
+<CuratedStations refresh={refresh} />
+  // refresh();
   const classes = useStyles();
     return (
             <AppBar className={classes.root}>
@@ -115,9 +124,11 @@ export default function MediaControlCard({ handlePlay, currentStation, currentCo
                 </div>
                 <CardContent className={classes.info}>
                 <>{!playPause ?
+                 
                       <Typography component="h5" variant="h6" className={classes.contentTitle} refresh="true">
                           Station: {currentStation}
                       </Typography>
+              
                   :
                       <Typography component="h5" variant="h6" className={classes.contentTitleActive} refresh="true">
                           Station: {currentStation}

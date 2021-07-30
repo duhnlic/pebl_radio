@@ -2,7 +2,7 @@ import play from '../../shared/play_push_icon.svg'
 import radio from '../../shared/radio_icon2.svg'
 import NavBar from '../NavBar/NavBar'
 
-export default function CuratedStations({stations, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setCurrentId, setTrue}){
+export default function CuratedStations({stations, setCurrentMedia, setCurrentStation, setCurrentCountry, setCurrentGenre, setCurrentId, setTrue, refresh }){
 
     //account for the possibility of the API not loading
     if (stations === undefined || !stations.length){
@@ -27,12 +27,14 @@ export default function CuratedStations({stations, setCurrentMedia, setCurrentSt
                         <button
                         className="station-button"
                         onClick={() => { 
+                                refresh()
                                 setCurrentMedia(stationObject.url)
                                 setCurrentStation(stationObject.name)
                                 setCurrentCountry(stationObject.country)
                                 setCurrentGenre(stationObject.genre)
                                 setCurrentId(stationObject._id)
                                 setTrue()
+                                
                                 
                             }
                         }>

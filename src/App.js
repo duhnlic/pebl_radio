@@ -10,6 +10,7 @@ import Profile from './Components/Profile/Profile';
 import Home from './Components/Home/Home';
 import CuratedStations from './Components/CuratedStations/CuratedStations'
 import Register from './Components/Registration/Registration'
+import * as mm from 'music-metadata';
 
 
 export default function App () {
@@ -273,6 +274,25 @@ export default function App () {
   //   }
   // };
 
+
+  // Get Metadata from Streams
+  // const { Readable } = require('stream')
+  // const [metadataUrl, setMetadataUrl] = useState('');
+  // const metadataStream = new Readable();
+  // metadataStream._read = () => {};
+  // metadataStream.push(metadataUrl);
+
+  // const getMetadata = async () => {
+  //   try {
+  //     const metadata = await mm.parseStream(metadataUrl.Readable, {mimeType: 'audio/mpeg', size: 26838});
+  //     console.log(metadata);
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  // };
+ 
+
+
   function handleChange(event) {
     setSearchString(event.target.value);
   }
@@ -356,6 +376,7 @@ export default function App () {
             handleFavoriteAdd={handleFavoriteAdd}
             initPause={initPause}
             playPause={playPause}
+            // metadataUrl={metadataUrl}
           />
           <ReactAudioPlayer className="media-player"
             src= {currentMedia}
@@ -412,6 +433,7 @@ export default function App () {
             setCurrentCountry={setCurrentCountry}
             setCurrentGenre={setCurrentGenre}
             setTrue={setTrue}
+            // setMetadataUrl={setMetadataUrl}
           />
         </Route>
         <Route exact path={"/"}>
@@ -424,6 +446,8 @@ export default function App () {
             setCurrentId={setCurrentId}
             setPlayPause={setPlayPause}
             setTrue={setTrue}
+            // setMetadataUrl={setMetadataUrl}
+            
           />
         </Route>
         <Route exact path={"/register"}>

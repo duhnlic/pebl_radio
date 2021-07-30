@@ -17,6 +17,8 @@
     "glslify-loader": "^2.0.0",
     "material-ui-audio-player": "^1.6.2",
     "mui-audio-player": "^1.0.1",
+    "music-metadata": "^7.8.8",
+    "music-metadata-browser": "^2.2.7",
     "node-fetch": "^2.6.1",
     "raw-loader": "^4.0.2",
     "react": "^17.0.2",
