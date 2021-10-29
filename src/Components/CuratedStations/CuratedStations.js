@@ -27,7 +27,7 @@ export default function CuratedStations({stations, setCurrentMedia, setCurrentSt
                         <button
                         className="station-button"
                         onClick={() => { 
-                                refresh()
+                                // refresh()
                                 setCurrentMedia(stationObject.url)
                                 setCurrentStation(stationObject.name)
                                 setCurrentCountry(stationObject.country)
